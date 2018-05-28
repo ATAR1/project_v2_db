@@ -19,8 +19,8 @@ namespace EMC1
 
         public MatOut(DataSetEMC1 dataSet)
         {
-            InitializeComponent();
             this.dataSetEMC1 = dataSet;
+            InitializeComponent();          
             
         }
 
