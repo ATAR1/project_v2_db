@@ -29,11 +29,11 @@ namespace EMC1
             switch (comboBox1.SelectedIndex)
             {
                 case 0 :
-                    gET_REP_NARYADTableAdapter.Fill(dataSetEMC1.GET_REP_NARYAD, 1);
+                    //gET_REP_NARYADTableAdapter.Fill(dataSetEMC1.GET_REP_NARYAD, 1);
                     break;
 
                 case 1 :
-                    gET_REP_NARYADTableAdapter.Fill(dataSetEMC1.GET_REP_NARYAD, 2);
+                    //gET_REP_NARYADTableAdapter.Fill(dataSetEMC1.GET_REP_NARYAD, 2);
                     break;
 
                 default:

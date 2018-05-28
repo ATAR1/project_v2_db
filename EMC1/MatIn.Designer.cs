@@ -179,16 +179,16 @@
             this.comboBox1.TabIndex = 11;
             this.comboBox1.ValueMember = "Id";
             // 
-            // kontrBindingSource
+            // contrBindingSource
             // 
             this.contrBindingSource.DataMember = "Contr";
             this.contrBindingSource.DataSource = this.dataSetEMC1;
             // 
-            // kontrTableAdapter
+            // contrTableAdapter
             // 
             this.contrTableAdapter.ClearBeforeFill = true;
             // 
-            // storage_nalTableAdapter1
+            // storedTableAdapter1
             // 
             this.storedTableAdapter1.ClearBeforeFill = true;
             // 
@@ -202,7 +202,7 @@
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
-            // eD_IZMTableAdapter1
+            // unitTableAdapter1
             // 
             this.unitTableAdapter1.ClearBeforeFill = true;
             // 

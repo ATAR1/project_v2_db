@@ -35,7 +35,7 @@
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.dataSetEMC1 = new EMC1.DataSetEMC1();
             this.gET_REP_NARYADBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gET_REP_NARYADTableAdapter = new EMC1.DataSetEMC1TableAdapters.GET_REP_NARYADTableAdapter();
+            //this.gET_REP_NARYADTableAdapter = new EMC1.DataSetEMC1TableAdapters.GET_REP_NARYADTableAdapter();
             this.tableAdapterManager = new EMC1.DataSetEMC1TableAdapters.TableAdapterManager();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC1)).BeginInit();
@@ -94,7 +94,7 @@
             // 
             // gET_REP_NARYADTableAdapter
             // 
-            this.gET_REP_NARYADTableAdapter.ClearBeforeFill = true;
+            //this.gET_REP_NARYADTableAdapter.ClearBeforeFill = true;
             // 
             // tableAdapterManager
             // 
@@ -136,7 +136,7 @@
         public Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private DataSetEMC1 dataSetEMC1;
         private System.Windows.Forms.BindingSource gET_REP_NARYADBindingSource;
-        private DataSetEMC1TableAdapters.GET_REP_NARYADTableAdapter gET_REP_NARYADTableAdapter;
+        //private DataSetEMC1TableAdapters.GET_REP_NARYADTableAdapter gET_REP_NARYADTableAdapter;
         private DataSetEMC1TableAdapters.TableAdapterManager tableAdapterManager;
     }
 }
