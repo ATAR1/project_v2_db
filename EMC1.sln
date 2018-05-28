@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMC1", "EMC1\EMC1.csproj", "{7B82794B-8273-430E-A136-3E96653C611F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{DF444547-2CCB-402A-A941-784152B2444C}"
+	ProjectSection(SolutionItems) = preProject
+		DB\emcDB.mdf = DB\emcDB.mdf
+		DB\emcDB_log.ldf = DB\emcDB_log.ldf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
