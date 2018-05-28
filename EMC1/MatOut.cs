@@ -15,7 +15,6 @@ namespace EMC1
 {
     public partial class MatOut : Form
     {
-        private DataSetEMC1 dataSetEMC1;
 
         public MatOut(DataSetEMC1 dataSet)
         {
@@ -25,32 +24,39 @@ namespace EMC1
         }
 
         private void MatOut_Load(object sender, EventArgs e)
-        {            
-                    
+        {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.Stored". При необходимости она может быть перемещена или удалена.
+            this.storedTableAdapter.Fill(this.dataSetEMC1.Stored);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.Storage". При необходимости она может быть перемещена или удалена.
+            this.storageTableAdapter.Fill(this.dataSetEMC1.Storage);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.OutMaterial". При необходимости она может быть перемещена или удалена.
+            this.outMaterialTableAdapter.Fill(this.dataSetEMC1.OutMaterial);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.Job". При необходимости она может быть перемещена или удалена.
+            this.jobTableAdapter.Fill(this.dataSetEMC1.Job);
+
         }
 
-        
-        
+
+
 
         private void btOut_Click(object sender, EventArgs e)
         {
             if (!CheckValue())
                 return;
 
-            var planjobRow = dataSetEMC1.planjob.Single(pj => pj.id == (int)cmbJob.SelectedValue);
-            var materialRow = dataSetEMC1.material.Single(m => m.id_mat == (int)cmbMaterial.SelectedValue);
-            var usersRow = dataSetEMC1.users.First();
-            var employessRow = dataSetEMC1.employess.First();
-            dataSetEMC1.OUT_MATERIAL.AddOUT_MATERIALRow(
-                planjobRow,
-                (int)cmbStorage.SelectedValue,
-                materialRow,
+            var jobRow = dataSetEMC1.Job.Single(pj => pj.Id == (int)cmbJob.SelectedValue);
+            var materialRow = dataSetEMC1.Material.Single(m => m.Id == (int)cmbMaterial.SelectedValue);
+            var storageRow = dataSetEMC1.Storage.Single(s => s.Id == (int)cmbStorage.SelectedValue);
+            var usersRow = dataSetEMC1.User.First();
+            var employessRow = dataSetEMC1.Employee.First();
+            dataSetEMC1.OutMaterial.AddOutMaterialRow(
                 DateTime.Now,
+                materialRow,
                 int.Parse(txbCol.Text),
                 usersRow,
-                employessRow,
-                materialRow.name,
-                materialRow.ED_IZMRow.full_name
+                jobRow,
+                storageRow,                
+                employessRow
                 );
         }
 
@@ -82,13 +88,14 @@ namespace EMC1
                 return false;
             }
 
-            if (Convert.ToInt32(txbCol.Text) <= (int)((DataRowView)storageDataTable1BindingSource.Current).Row["count"])
-                return true;
-            else
-            {
-                MessageBox.Show("Недостаточно материалла на складе", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return false;
-            }
+            return true;
+            //if (Convert.ToInt32(txbCol.Text) <= (int)((DataRowView)storageDataTable1BindingSource.Current).Row["count"])
+            //    return true;
+            //else
+            //{
+            //    MessageBox.Show("Недостаточно материалла на складе", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    return false;
+            //}
         }              
 
         private void button1_Click(object sender, EventArgs e)
@@ -101,7 +108,7 @@ namespace EMC1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.oUT_MATERIALTableAdapter.Update(dataSetEMC1);
+            this.outMaterialTableAdapter.Update(dataSetEMC1);
         }
     }
 }

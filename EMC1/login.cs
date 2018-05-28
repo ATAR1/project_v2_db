@@ -51,13 +51,13 @@ namespace EMC1
 
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = "select id_user from users where login = '" + txbLogin.Text + "' and pwd = " + txbPWD.Text;
+                command.CommandText = "select id from [User] where login = '" + txbLogin.Text + "' and pwd = " + txbPWD.Text;
                 
                 try
                 {
                     connection.Open();
                     Int32.TryParse(command.ExecuteScalar().ToString(), out id_user);
-                    command.CommandText = "select id_role from users where id_user = " + id_user.ToString();
+                    command.CommandText = "select UserRoleId from [User] where id = " + id_user.ToString();
                     User.role = (int)command.ExecuteScalar();
                     User.connectionStr = connection.ConnectionString;
                     this.DialogResult = System.Windows.Forms.DialogResult.OK;

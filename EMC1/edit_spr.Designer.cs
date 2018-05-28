@@ -33,16 +33,16 @@
             this.dataSetEMC11 = new EMC1.DataSetEMC1();
             this.employessBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetEMC11BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.kontrBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.contrBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.storageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.jobsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employessTableAdapter = new EMC1.DataSetEMC1TableAdapters.employessTableAdapter();
-            this.employessTableAdapter1 = new EMC1.DataSetEMC1TableAdapters.employessTableAdapter();
-            this.kontrTableAdapter = new EMC1.DataSetEMC1TableAdapters.kontrTableAdapter();
-            this.storageTableAdapter = new EMC1.DataSetEMC1TableAdapters.storageTableAdapter();
-            this.materialTableAdapter = new EMC1.DataSetEMC1TableAdapters.materialTableAdapter();
-            this.jobsTableAdapter = new EMC1.DataSetEMC1TableAdapters.jobsTableAdapter();
+            this.jobTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeTableAdapter = new EMC1.DataSetEMC1TableAdapters.EmployeTableAdapter();
+            this.employeeTableAdapter1 = new EMC1.DataSetEMC1TableAdapters.EmployeTableAdapter();
+            this.contrTableAdapter = new EMC1.DataSetEMC1TableAdapters.ContrTableAdapter();
+            this.storageTableAdapter = new EMC1.DataSetEMC1TableAdapters.StorageTableAdapter();
+            this.materialTableAdapter = new EMC1.DataSetEMC1TableAdapters.MaterialTableAdapter();
+            this.jobTypeTableAdapter = new EMC1.DataSetEMC1TableAdapters.JobTypeTableAdapter();
             this.jobs = new System.Windows.Forms.TabPage();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.material = new System.Windows.Forms.TabPage();
@@ -75,15 +75,15 @@
             this.nameedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
-            this.eD_IZMTableAdapter = new EMC1.DataSetEMC1TableAdapters.ED_IZMTableAdapter();
+            this.unitTableAdapter = new EMC1.DataSetEMC1TableAdapters.UnitTableAdapter();
             this.nameDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employessBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC11BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kontrBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contrBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jobsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobTypeBindingSource)).BeginInit();
             this.jobs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             this.material.SuspendLayout();
@@ -117,8 +117,8 @@
             // 
             // kontrBindingSource
             // 
-            this.kontrBindingSource.DataMember = "kontr";
-            this.kontrBindingSource.DataSource = this.dataSetEMC11BindingSource;
+            this.contrBindingSource.DataMember = "kontr";
+            this.contrBindingSource.DataSource = this.dataSetEMC11BindingSource;
             // 
             // storageBindingSource
             // 
@@ -132,20 +132,20 @@
             // 
             // jobsBindingSource
             // 
-            this.jobsBindingSource.DataMember = "jobs";
-            this.jobsBindingSource.DataSource = this.dataSetEMC11BindingSource;
+            this.jobTypeBindingSource.DataMember = "jobs";
+            this.jobTypeBindingSource.DataSource = this.dataSetEMC11BindingSource;
             // 
             // employessTableAdapter
             // 
-            this.employessTableAdapter.ClearBeforeFill = true;
+            this.employeeTableAdapter.ClearBeforeFill = true;
             // 
             // employessTableAdapter1
             // 
-            this.employessTableAdapter1.ClearBeforeFill = true;
+            this.employeeTableAdapter1.ClearBeforeFill = true;
             // 
             // kontrTableAdapter
             // 
-            this.kontrTableAdapter.ClearBeforeFill = true;
+            this.contrTableAdapter.ClearBeforeFill = true;
             // 
             // storageTableAdapter
             // 
@@ -157,7 +157,7 @@
             // 
             // jobsTableAdapter
             // 
-            this.jobsTableAdapter.ClearBeforeFill = true;
+            this.jobTypeTableAdapter.ClearBeforeFill = true;
             // 
             // jobs
             // 
@@ -176,7 +176,7 @@
             this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView5.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDataGridViewTextBoxColumn3});
-            this.dataGridView5.DataSource = this.jobsBindingSource;
+            this.dataGridView5.DataSource = this.jobTypeBindingSource;
             this.dataGridView5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView5.Location = new System.Drawing.Point(3, 3);
             this.dataGridView5.Name = "dataGridView5";
@@ -310,7 +310,7 @@
             this.telefoneDataGridViewTextBoxColumn1,
             this.adressDataGridViewTextBoxColumn,
             this.contactnameDataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.kontrBindingSource;
+            this.dataGridView2.DataSource = this.contrBindingSource;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(3, 3);
             this.dataGridView2.Name = "dataGridView2";
@@ -461,7 +461,7 @@
             // 
             // eD_IZMTableAdapter
             // 
-            this.eD_IZMTableAdapter.ClearBeforeFill = true;
+            this.unitTableAdapter.ClearBeforeFill = true;
             // 
             // nameDataGridViewTextBoxColumn3
             // 
@@ -482,10 +482,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employessBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC11BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kontrBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contrBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.storageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jobsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobTypeBindingSource)).EndInit();
             this.jobs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             this.material.ResumeLayout(false);
@@ -509,16 +509,16 @@
         private DataSetEMC1 dataSetEMC11;
         private System.Windows.Forms.BindingSource dataSetEMC11BindingSource;
         private System.Windows.Forms.BindingSource employessBindingSource;
-        private DataSetEMC1TableAdapters.employessTableAdapter employessTableAdapter;
-        private DataSetEMC1TableAdapters.employessTableAdapter employessTableAdapter1;
-        private System.Windows.Forms.BindingSource kontrBindingSource;
-        private DataSetEMC1TableAdapters.kontrTableAdapter kontrTableAdapter;
+        private DataSetEMC1TableAdapters.EmployeTableAdapter employeeTableAdapter;
+        private DataSetEMC1TableAdapters.EmployeTableAdapter employeeTableAdapter1;
+        private System.Windows.Forms.BindingSource contrBindingSource;
+        private DataSetEMC1TableAdapters.ContrTableAdapter contrTableAdapter;
         private System.Windows.Forms.BindingSource storageBindingSource;
-        private DataSetEMC1TableAdapters.storageTableAdapter storageTableAdapter;
+        private DataSetEMC1TableAdapters.StorageTableAdapter storageTableAdapter;
         private System.Windows.Forms.BindingSource materialBindingSource;
-        private DataSetEMC1TableAdapters.materialTableAdapter materialTableAdapter;
-        private System.Windows.Forms.BindingSource jobsBindingSource;
-        private DataSetEMC1TableAdapters.jobsTableAdapter jobsTableAdapter;
+        private DataSetEMC1TableAdapters.MaterialTableAdapter materialTableAdapter;
+        private System.Windows.Forms.BindingSource jobTypeBindingSource;
+        private DataSetEMC1TableAdapters.JobTypeTableAdapter jobTypeTableAdapter;
         private System.Windows.Forms.TabPage jobs;
         private System.Windows.Forms.DataGridView dataGridView5;
         private System.Windows.Forms.TabPage material;
@@ -540,7 +540,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.BindingSource eDIZMBindingSource;
-        private DataSetEMC1TableAdapters.ED_IZMTableAdapter eD_IZMTableAdapter;
+        private DataSetEMC1TableAdapters.UnitTableAdapter unitTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewComboBoxColumn ed_izm;
         private System.Windows.Forms.TabPage tpEdIzm;

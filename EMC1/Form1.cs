@@ -22,15 +22,13 @@ namespace EMC1
         private void Form1_Load(object sender, EventArgs e)
         {
             SetScreen();
-            this.storageTableAdapter.Fill(this.dataSetEMC1.storage);
-            new OUT_MATERIALTableAdapter().Fill(this.dataSetEMC1.OUT_MATERIAL);
-            new DataTable1TableAdapter().Fill(this.dataSetEMC1.DataTable1);
-            new storageTableAdapter().Fill(this.dataSetEMC1.storage);
-            new planjobTableAdapter().Fill(this.dataSetEMC1.planjob);
-            new usersTableAdapter().Fill(dataSetEMC1.users);
-            new employessTableAdapter().Fill(dataSetEMC1.employess);
-            new materialTableAdapter().Fill(dataSetEMC1.material);
-            new ED_IZMTableAdapter().Fill(dataSetEMC1.ED_IZM);
+            new OutMaterialTableAdapter().Fill(this.dataSetEMC1.OutMaterial);
+            new StorageTableAdapter().Fill(this.dataSetEMC1.Storage);
+            new JobTableAdapter().Fill(this.dataSetEMC1.Job);
+            new UserTableAdapter().Fill(dataSetEMC1.User);
+            new EmployeTableAdapter().Fill(dataSetEMC1.Employee);
+            new MaterialTableAdapter().Fill(dataSetEMC1.Material);
+            new UnitTableAdapter().Fill(dataSetEMC1.Unit);
             label4.Text = "Здравствуйте сегодня  " + DateTime.Now.ToShortDateString();
         }
 
@@ -57,14 +55,14 @@ namespace EMC1
         {
             edit_spr edit_spr = new edit_spr();
             edit_spr.ShowDialog();
-            this.storageTableAdapter.Fill(this.dataSetEMC1.storage);
+            this.storageTableAdapter.Fill(this.dataSetEMC1.Storage);
         }
 
         private void btInMatClick(object sender, EventArgs e)
         {
             MatIn matin = new MatIn();
             matin.ShowDialog();
-            this.storageTableAdapter.Fill(this.dataSetEMC1.storage);
+            this.storageTableAdapter.Fill(this.dataSetEMC1.Storage);
         }
 
         private void btGiveJobClick(object sender, EventArgs e)
@@ -77,7 +75,7 @@ namespace EMC1
         {
             MatOut mathout = new MatOut(this.dataSetEMC1);
             mathout.ShowDialog();
-            this.storageTableAdapter.Fill(this.dataSetEMC1.storage);
+            this.storageTableAdapter.Fill(this.dataSetEMC1.Storage);
         }
         
 
@@ -86,7 +84,7 @@ namespace EMC1
             if (dataGridView2.CurrentRow == null)
                 return;
             DataRowView rw = (DataRowView)dataGridView2.CurrentRow.DataBoundItem;
-            FillOstStorage((int)rw["id_storage"]);
+            FillOstStorage((int)rw["Id"]);
         }
 
         private void FillOstStorage(int id)

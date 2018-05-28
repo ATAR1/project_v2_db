@@ -19,8 +19,8 @@ namespace EMC1
 
         private void admin_Load(object sender, EventArgs e)
         {
-            this.user_roleTableAdapter.Fill(this.dataSetEMC1.user_role);
-            this.usersTableAdapter.Fill(this.dataSetEMC1.users);
+            this.userRoleTableAdapter.Fill(this.dataSetEMC1.UserRole);
+            this.usersTableAdapter.Fill(this.dataSetEMC1.User);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,10 +28,10 @@ namespace EMC1
             switch (tabControl1.SelectedTab.Name)
             {
                 case "user":
-                    this.usersTableAdapter.Update(this.dataSetEMC1.users);
+                    this.usersTableAdapter.Update(this.dataSetEMC1.User);
                     break;
                 case "role":
-                    this.user_roleTableAdapter.Update(this.dataSetEMC1.user_role);
+                    this.userRoleTableAdapter.Update(this.dataSetEMC1.UserRole);
                     break;
 
             }//switch

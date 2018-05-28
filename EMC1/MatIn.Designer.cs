@@ -34,26 +34,26 @@
             this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetEMC1 = new EMC1.DataSetEMC1();
             this.label1 = new System.Windows.Forms.Label();
-            this.materialTableAdapter = new EMC1.DataSetEMC1TableAdapters.materialTableAdapter();
+            this.materialTableAdapter = new EMC1.DataSetEMC1TableAdapters.MaterialTableAdapter();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbStorage = new System.Windows.Forms.ComboBox();
             this.storageBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.storageTableAdapter = new EMC1.DataSetEMC1TableAdapters.storageTableAdapter();
+            this.storageTableAdapter = new EMC1.DataSetEMC1TableAdapters.StorageTableAdapter();
             this.label3 = new System.Windows.Forms.Label();
             this.txbCol = new System.Windows.Forms.TextBox();
             this.btSave = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.kontrBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.kontrTableAdapter = new EMC1.DataSetEMC1TableAdapters.kontrTableAdapter();
-            this.storage_nalTableAdapter1 = new EMC1.DataSetEMC1TableAdapters.storage_nalTableAdapter();
+            this.contrBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.contrTableAdapter = new EMC1.DataSetEMC1TableAdapters.ContrTableAdapter();
+            this.storedTableAdapter1 = new EMC1.DataSetEMC1TableAdapters.StoredTableAdapter();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.eD_IZMTableAdapter1 = new EMC1.DataSetEMC1TableAdapters.ED_IZMTableAdapter();
+            this.unitTableAdapter1 = new EMC1.DataSetEMC1TableAdapters.UnitTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storageBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kontrBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contrBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -169,7 +169,7 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.DataSource = this.kontrBindingSource;
+            this.comboBox1.DataSource = this.contrBindingSource;
             this.comboBox1.DisplayMember = "name";
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
@@ -181,16 +181,16 @@
             // 
             // kontrBindingSource
             // 
-            this.kontrBindingSource.DataMember = "kontr";
-            this.kontrBindingSource.DataSource = this.dataSetEMC1;
+            this.contrBindingSource.DataMember = "kontr";
+            this.contrBindingSource.DataSource = this.dataSetEMC1;
             // 
             // kontrTableAdapter
             // 
-            this.kontrTableAdapter.ClearBeforeFill = true;
+            this.contrTableAdapter.ClearBeforeFill = true;
             // 
             // storage_nalTableAdapter1
             // 
-            this.storage_nalTableAdapter1.ClearBeforeFill = true;
+            this.storedTableAdapter1.ClearBeforeFill = true;
             // 
             // pictureBox1
             // 
@@ -204,7 +204,7 @@
             // 
             // eD_IZMTableAdapter1
             // 
-            this.eD_IZMTableAdapter1.ClearBeforeFill = true;
+            this.unitTableAdapter1.ClearBeforeFill = true;
             // 
             // MatIn
             // 
@@ -229,7 +229,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.storageBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kontrBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contrBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -242,11 +242,11 @@
         private System.Windows.Forms.Label label1;
         private DataSetEMC1 dataSetEMC1;
         private System.Windows.Forms.BindingSource materialBindingSource;
-        private DataSetEMC1TableAdapters.materialTableAdapter materialTableAdapter;
+        private DataSetEMC1TableAdapters.MaterialTableAdapter materialTableAdapter;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbStorage;
         private System.Windows.Forms.BindingSource storageBindingSource;
-        private DataSetEMC1TableAdapters.storageTableAdapter storageTableAdapter;
+        private DataSetEMC1TableAdapters.StorageTableAdapter storageTableAdapter;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txbCol;
         private System.Windows.Forms.Button btSave;
@@ -254,10 +254,10 @@
         
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.BindingSource kontrBindingSource;
-        private DataSetEMC1TableAdapters.kontrTableAdapter kontrTableAdapter;
-        private DataSetEMC1TableAdapters.storage_nalTableAdapter storage_nalTableAdapter1;
+        private System.Windows.Forms.BindingSource contrBindingSource;
+        private DataSetEMC1TableAdapters.ContrTableAdapter contrTableAdapter;
+        private DataSetEMC1TableAdapters.StoredTableAdapter storedTableAdapter1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private DataSetEMC1TableAdapters.ED_IZMTableAdapter eD_IZMTableAdapter1;
+        private DataSetEMC1TableAdapters.UnitTableAdapter unitTableAdapter1;
     }
 }

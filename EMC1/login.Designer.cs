@@ -35,7 +35,7 @@
             this.txbPWD = new System.Windows.Forms.TextBox();
             this.btEnter = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.usersTableAdapter1 = new EMC1.DataSetEMC1TableAdapters.usersTableAdapter();
+            this.userTableAdapter1 = new EMC1.DataSetEMC1TableAdapters.UserTableAdapter();
             this.dataSetEMC11 = new EMC1.DataSetEMC1();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC11)).BeginInit();
@@ -101,7 +101,7 @@
             // 
             // usersTableAdapter1
             // 
-            this.usersTableAdapter1.ClearBeforeFill = true;
+            this.userTableAdapter1.ClearBeforeFill = true;
             // 
             // dataSetEMC11
             // 
@@ -142,7 +142,7 @@
         private System.Windows.Forms.TextBox txbPWD;
         private System.Windows.Forms.Button btEnter;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private DataSetEMC1TableAdapters.usersTableAdapter usersTableAdapter1;
+        private DataSetEMC1TableAdapters.UserTableAdapter userTableAdapter1;
         private DataSetEMC1 dataSetEMC11;
     }
 }

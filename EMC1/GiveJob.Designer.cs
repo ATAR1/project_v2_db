@@ -36,21 +36,21 @@
             this.cmbMat = new System.Windows.Forms.ComboBox();
             this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetEMC1 = new EMC1.DataSetEMC1();
-            this.materialTableAdapter = new EMC1.DataSetEMC1TableAdapters.materialTableAdapter();
+            this.materialTableAdapter = new EMC1.DataSetEMC1TableAdapters.MaterialTableAdapter();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbJobs = new System.Windows.Forms.ComboBox();
             this.jobsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.jobsTableAdapter = new EMC1.DataSetEMC1TableAdapters.jobsTableAdapter();
+            this.jobTypeTableAdapter = new EMC1.DataSetEMC1TableAdapters.JobTypeTableAdapter();
             this.btOk = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
-            this.planjobTableAdapter1 = new EMC1.DataSetEMC1TableAdapters.planjobTableAdapter();
+            this.jobTableAdapter1 = new EMC1.DataSetEMC1TableAdapters.JobTableAdapter();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbEmpl = new System.Windows.Forms.ComboBox();
             this.employessBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employessTableAdapter = new EMC1.DataSetEMC1TableAdapters.employessTableAdapter();
+            this.employeTableAdapter = new EMC1.DataSetEMC1TableAdapters.EmployeTableAdapter();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.eD_IZMTableAdapter1 = new EMC1.DataSetEMC1TableAdapters.ED_IZMTableAdapter();
+            this.unitTableAdapter1 = new EMC1.DataSetEMC1TableAdapters.UnitTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jobsBindingSource)).BeginInit();
@@ -139,7 +139,7 @@
             // 
             // jobsTableAdapter
             // 
-            this.jobsTableAdapter.ClearBeforeFill = true;
+            this.jobTypeTableAdapter.ClearBeforeFill = true;
             // 
             // btOk
             // 
@@ -163,7 +163,7 @@
             // 
             // planjobTableAdapter1
             // 
-            this.planjobTableAdapter1.ClearBeforeFill = true;
+            this.jobTableAdapter1.ClearBeforeFill = true;
             // 
             // label4
             // 
@@ -193,7 +193,7 @@
             // 
             // employessTableAdapter
             // 
-            this.employessTableAdapter.ClearBeforeFill = true;
+            this.employeTableAdapter.ClearBeforeFill = true;
             // 
             // label5
             // 
@@ -215,7 +215,7 @@
             // 
             // eD_IZMTableAdapter1
             // 
-            this.eD_IZMTableAdapter1.ClearBeforeFill = true;
+            this.unitTableAdapter1.ClearBeforeFill = true;
             // 
             // GiveJob
             // 
@@ -256,20 +256,20 @@
         private System.Windows.Forms.ComboBox cmbMat;
         private DataSetEMC1 dataSetEMC1;
         private System.Windows.Forms.BindingSource materialBindingSource;
-        private DataSetEMC1TableAdapters.materialTableAdapter materialTableAdapter;
+        private DataSetEMC1TableAdapters.MaterialTableAdapter materialTableAdapter;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbJobs;
         private System.Windows.Forms.BindingSource jobsBindingSource;
-        private DataSetEMC1TableAdapters.jobsTableAdapter jobsTableAdapter;
+        private DataSetEMC1TableAdapters.JobTypeTableAdapter jobTypeTableAdapter;
         private System.Windows.Forms.Button btOk;
         private System.Windows.Forms.Button btCancel;
-        private DataSetEMC1TableAdapters.planjobTableAdapter planjobTableAdapter1;
+        private DataSetEMC1TableAdapters.JobTableAdapter jobTableAdapter1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbEmpl;
         private System.Windows.Forms.BindingSource employessBindingSource;
-        private DataSetEMC1TableAdapters.employessTableAdapter employessTableAdapter;
+        private DataSetEMC1TableAdapters.EmployeTableAdapter employeTableAdapter;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private DataSetEMC1TableAdapters.ED_IZMTableAdapter eD_IZMTableAdapter1;
+        private DataSetEMC1TableAdapters.UnitTableAdapter unitTableAdapter1;
     }
 }

@@ -20,10 +20,10 @@ namespace EMC1
 
         private void MatIn_Load(object sender, EventArgs e)
         {
-            this.eD_IZMTableAdapter1.Fill(this.dataSetEMC1.ED_IZM);
-            this.kontrTableAdapter.Fill(this.dataSetEMC1.kontr);
-            this.storageTableAdapter.Fill(this.dataSetEMC1.storage);
-            this.materialTableAdapter.Fill(this.dataSetEMC1.material);
+            this.unitTableAdapter1.Fill(this.dataSetEMC1.Unit);
+            this.contrTableAdapter.Fill(this.dataSetEMC1.Contr);
+            this.storageTableAdapter.Fill(this.dataSetEMC1.Storage);
+            this.materialTableAdapter.Fill(this.dataSetEMC1.Material);
         }
 
         private void btSave_Click(object sender, EventArgs e)
@@ -91,14 +91,14 @@ namespace EMC1
 
             if(count_old == 0)
             {
-                DataSetEMC1.storage_nalRow NewRow = dataSetEMC1.storage_nal.Newstorage_nalRow();
-                NewRow.count = decimal.Parse(txbCol.Text);
-                NewRow.id_storage = (int)cmbStorage.SelectedValue;
-                NewRow.id_mat = (int)cmbMat.SelectedValue;
-                dataSetEMC1.storage_nal.Rows.Add(NewRow);
+                DataSetEMC1.StoredRow NewRow = dataSetEMC1.Stored.NewStoredRow();
+                NewRow.Count = decimal.Parse(txbCol.Text);
+                NewRow.StorageId = (int)cmbStorage.SelectedValue;
+                NewRow.MaterialId = (int)cmbMat.SelectedValue;
+                dataSetEMC1.Stored.Rows.Add(NewRow);
                 try
                 {
-                    this.storage_nalTableAdapter1.Update(this.dataSetEMC1.storage_nal);
+                    this.storedTableAdapter1.Update(this.dataSetEMC1.Stored);
                     
                     result = true;
                 }
@@ -138,7 +138,7 @@ namespace EMC1
             else
             {
                 MessageBox.Show("Не удалось сохранить данные", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.dataSetEMC1.storage_nal.Clear();
+                this.dataSetEMC1.Stored.Clear();
             }
                 
 

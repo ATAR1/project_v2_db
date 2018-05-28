@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.listView1 = new System.Windows.Forms.ListView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.mat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.balanceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetEMC1 = new EMC1.DataSetEMC1();
             this.but_out_mat = new System.Windows.Forms.Button();
@@ -44,11 +46,8 @@
             this.storageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.storageTableAdapter = new EMC1.DataSetEMC1TableAdapters.storageTableAdapter();
-            //this.balanceTableAdapter = new EMC1.DataSetEMC1TableAdapters.BalanceTableAdapter();
+            this.storageTableAdapter = new EMC1.DataSetEMC1TableAdapters.StorageTableAdapter();
             this.tableAdapterManager = new EMC1.DataSetEMC1TableAdapters.TableAdapterManager();
-            this.mat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.balanceBindingSource)).BeginInit();
@@ -84,10 +83,21 @@
             this.dataGridView1.Size = new System.Drawing.Size(558, 465);
             this.dataGridView1.TabIndex = 1;
             // 
-            // balanceBindingSource
+            // mat
             // 
-            //this.balanceBindingSource.DataMember = "Balance";
-            //this.balanceBindingSource.DataSource = this.dataSetEMC1;
+            this.mat.DataPropertyName = "name";
+            this.mat.FillWeight = 118.018F;
+            this.mat.HeaderText = "Материал";
+            this.mat.Name = "mat";
+            this.mat.ReadOnly = true;
+            // 
+            // count
+            // 
+            this.count.DataPropertyName = "balance";
+            this.count.FillWeight = 118.018F;
+            this.count.HeaderText = "Остаток";
+            this.count.Name = "count";
+            this.count.ReadOnly = true;
             // 
             // dataSetEMC1
             // 
@@ -208,45 +218,27 @@
             // 
             this.storageTableAdapter.ClearBeforeFill = true;
             // 
-            // balanceTableAdapter
-            // 
-            //this.balanceTableAdapter.ClearBeforeFill = true;
-            // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.Connection = null;
-            this.tableAdapterManager.ED_IZMTableAdapter = null;
-            this.tableAdapterManager.employessTableAdapter = null;
-            this.tableAdapterManager.jobsTableAdapter = null;
-            this.tableAdapterManager.kontrTableAdapter = null;
-            this.tableAdapterManager.materialTableAdapter = null;
-            this.tableAdapterManager.planjobTableAdapter = null;
-            this.tableAdapterManager.storage_nalTableAdapter = null;
-            this.tableAdapterManager.storageTableAdapter = null;
+            this.tableAdapterManager.EmployeTableAdapter = null;
+            this.tableAdapterManager.InMaterialTableAdapter = null;
+            this.tableAdapterManager.JobTableAdapter = null;
+            this.tableAdapterManager.JobTypeTableAdapter = null;
+            this.tableAdapterManager.MaterialTableAdapter = null;
+            this.tableAdapterManager.OutMaterialTableAdapter = null;
+            this.tableAdapterManager.StorageTableAdapter = null;
+            this.tableAdapterManager.StoredTableAdapter = null;
+            this.tableAdapterManager.UnitTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = EMC1.DataSetEMC1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.user_roleTableAdapter = null;
-            this.tableAdapterManager.usersTableAdapter = null;
-            // 
-            // mat
-            // 
-            this.mat.DataPropertyName = "name";
-            this.mat.FillWeight = 118.018F;
-            this.mat.HeaderText = "Материал";
-            this.mat.Name = "mat";
-            this.mat.ReadOnly = true;
-            // 
-            // count
-            // 
-            this.count.DataPropertyName = "balance";
-            this.count.FillWeight = 118.018F;
-            this.count.HeaderText = "Остаток";
-            this.count.Name = "count";
-            this.count.ReadOnly = true;
+            this.tableAdapterManager.UserRoleTableAdapter = null;
+            this.tableAdapterManager.UserTableAdapter = null;
+            this.tableAdapterManager.ContrTableAdapter = null;
             // 
             // nameDataGridViewTextBoxColumn
             // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             this.nameDataGridViewTextBoxColumn.HeaderText = "Склад";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             this.nameDataGridViewTextBoxColumn.ReadOnly = true;
@@ -295,7 +287,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private DataSetEMC1TableAdapters.storageTableAdapter storageTableAdapter;
+        private DataSetEMC1TableAdapters.StorageTableAdapter storageTableAdapter;
         private System.Windows.Forms.BindingSource storageBindingSource;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;

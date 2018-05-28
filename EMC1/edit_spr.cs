@@ -20,12 +20,12 @@ namespace EMC1
         private void edit_spr_Load(object sender, EventArgs e)
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC11.ED_IZM". При необходимости она может быть перемещена или удалена.
-            this.eD_IZMTableAdapter.Fill(this.dataSetEMC11.ED_IZM);
-            this.employessTableAdapter.Fill(this.dataSetEMC11.employess);
-            this.kontrTableAdapter.Fill(this.dataSetEMC11.kontr);
-            this.storageTableAdapter.Fill(this.dataSetEMC11.storage);
-            this.materialTableAdapter.Fill(this.dataSetEMC11.material);
-            this.jobsTableAdapter.Fill(this.dataSetEMC11.jobs);
+            this.unitTableAdapter.Fill(this.dataSetEMC11.Unit);
+            this.employeeTableAdapter.Fill(this.dataSetEMC11.Employee);
+            this.contrTableAdapter.Fill(this.dataSetEMC11.Contr);
+            this.storageTableAdapter.Fill(this.dataSetEMC11.Storage);
+            this.materialTableAdapter.Fill(this.dataSetEMC11.Material);
+            this.jobTypeTableAdapter.Fill(this.dataSetEMC11.JobType);
         }
 
 
@@ -34,22 +34,22 @@ namespace EMC1
             switch (tabControl1.SelectedTab.Name)
             {
                 case "employess":
-                    this.employessTableAdapter.Update(this.dataSetEMC11.employess);
+                    this.employeeTableAdapter.Update(this.dataSetEMC11.Employee);
                     break;
                 case "kontr":
-                    this.kontrTableAdapter.Update(this.dataSetEMC11.kontr);
+                    this.contrTableAdapter.Update(this.dataSetEMC11.Contr);
                     break;
                 case "storage":
-                    this.storageTableAdapter.Update(this.dataSetEMC11.storage);
+                    this.storageTableAdapter.Update(this.dataSetEMC11.Storage);
                     break;
                 case "material":
-                    this.materialTableAdapter.Update(this.dataSetEMC11.material);
+                    this.materialTableAdapter.Update(this.dataSetEMC11.Material);
                     break;
                 case "jobs":
-                    this.jobsTableAdapter.Update(this.dataSetEMC11.jobs);
+                    this.jobTypeTableAdapter.Update(this.dataSetEMC11.JobType);
                     break;
                 case "tpEdIzm":
-                    this.eD_IZMTableAdapter.Update(this.dataSetEMC11.ED_IZM);
+                    this.unitTableAdapter.Update(this.dataSetEMC11.Unit);
                     break;
             }//switch
         }

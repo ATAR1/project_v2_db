@@ -45,9 +45,9 @@
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userroleBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
-            this.usersTableAdapter = new EMC1.DataSetEMC1TableAdapters.usersTableAdapter();
-            this.usersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.user_roleTableAdapter = new EMC1.DataSetEMC1TableAdapters.user_roleTableAdapter();
+            this.usersTableAdapter = new EMC1.DataSetEMC1TableAdapters.UserTableAdapter();
+            this.userBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.userRoleTableAdapter = new EMC1.DataSetEMC1TableAdapters.UserRoleTableAdapter();
             this.tabControl1.SuspendLayout();
             this.user.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -57,7 +57,7 @@
             this.role.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userroleBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -202,12 +202,12 @@
             // 
             // usersBindingSource1
             // 
-            this.usersBindingSource1.DataMember = "users";
-            this.usersBindingSource1.DataSource = this.dataSetEMC1;
+            this.userBindingSource1.DataMember = "users";
+            this.userBindingSource1.DataSource = this.dataSetEMC1;
             // 
             // user_roleTableAdapter
             // 
-            this.user_roleTableAdapter.ClearBeforeFill = true;
+            this.userRoleTableAdapter.ClearBeforeFill = true;
             // 
             // admin
             // 
@@ -228,7 +228,7 @@
             this.role.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userroleBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -242,10 +242,10 @@
         private System.Windows.Forms.Button button1;
         private DataSetEMC1 dataSetEMC1;
         private System.Windows.Forms.BindingSource usersBindingSource;
-        private DataSetEMC1TableAdapters.usersTableAdapter usersTableAdapter;
-        private System.Windows.Forms.BindingSource usersBindingSource1;
+        private DataSetEMC1TableAdapters.UserTableAdapter usersTableAdapter;
+        private System.Windows.Forms.BindingSource userBindingSource1;
         private System.Windows.Forms.BindingSource userroleBindingSource;
-        private DataSetEMC1TableAdapters.user_roleTableAdapter user_roleTableAdapter;
+        private DataSetEMC1TableAdapters.UserRoleTableAdapter userRoleTableAdapter;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.BindingSource userroleBindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn iduserDataGridViewTextBoxColumn;

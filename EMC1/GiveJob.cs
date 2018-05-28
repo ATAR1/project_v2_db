@@ -20,10 +20,10 @@ namespace EMC1
 
         private void GiveJob_Load(object sender, EventArgs e)
         {
-            this.eD_IZMTableAdapter1.Fill(this.dataSetEMC1.ED_IZM);
-            this.employessTableAdapter.Fill(this.dataSetEMC1.employess);
-            this.jobsTableAdapter.Fill(this.dataSetEMC1.jobs);
-            this.materialTableAdapter.Fill(this.dataSetEMC1.material);
+            this.unitTableAdapter1.Fill(this.dataSetEMC1.Unit);
+            this.employeTableAdapter.Fill(this.dataSetEMC1.Employee);
+            this.jobTypeTableAdapter.Fill(this.dataSetEMC1.JobType);
+            this.materialTableAdapter.Fill(this.dataSetEMC1.Material);
             this.cmbMat.SelectedIndex = -1;
             this.cmbJobs.SelectedIndex = -1;
         }
@@ -44,7 +44,7 @@ namespace EMC1
 
         private bool SaveData()
         {
-            DataSetEMC1.planjobRow NewRow= this.dataSetEMC1.planjob.NewplanjobRow();
+            DataSetEMC1.JobRow NewRow= this.dataSetEMC1.Job.NewJobRow();
             NewRow["id_jobs"] = (int)cmbJobs.SelectedValue;
             NewRow["id_emp"] = (int)cmbEmpl.SelectedValue;
             NewRow["date"] = dtp.Value;
@@ -53,10 +53,10 @@ namespace EMC1
             NewRow["status"] = 1;
             NewRow["date_adm"] = DateTime.Now;
 
-            dataSetEMC1.planjob.AddplanjobRow(NewRow);
+            dataSetEMC1.Job.AddJobRow(NewRow);
             try
             {
-                this.planjobTableAdapter1.Update(dataSetEMC1.planjob);
+                this.jobTableAdapter1.Update(dataSetEMC1.Job);
                 MessageBox.Show("Данные сохранены", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
@@ -161,7 +161,7 @@ namespace EMC1
         {
             try
             {
-                this.employessTableAdapter.Fill(this.dataSetEMC1.employess);
+                this.employeTableAdapter.Fill(this.dataSetEMC1.Employee);
             }
             catch (System.Exception ex)
             {
@@ -176,7 +176,7 @@ namespace EMC1
                 return;
 
             DataRowView RowView = (DataRowView)cmbJobs.SelectedItem;
-            DataView view = this.dataSetEMC1.material.AsDataView();
+            DataView view = this.dataSetEMC1.Material.AsDataView();
             view.RowFilter = GetMatByJobs(RowView["id_jobs"]);
             cmbMat.DataSource = view;
         }

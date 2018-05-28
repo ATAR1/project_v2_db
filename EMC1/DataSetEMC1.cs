@@ -4,11 +4,11 @@
 
     public partial class DataSetEMC1
     {
-        partial class usersDataTable
+        partial class UserDataTable
         {
         }
 
-        partial class employessDataTable
+        partial class EmployeeDataTable
         {
         }
     }

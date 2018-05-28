@@ -100,16 +100,16 @@
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.Connection = null;
-            this.tableAdapterManager.employessTableAdapter = null;
-            this.tableAdapterManager.jobsTableAdapter = null;
-            this.tableAdapterManager.kontrTableAdapter = null;
-            this.tableAdapterManager.materialTableAdapter = null;
-            this.tableAdapterManager.planjobTableAdapter = null;
-            this.tableAdapterManager.storage_nalTableAdapter = null;
-            this.tableAdapterManager.storageTableAdapter = null;
+            this.tableAdapterManager.EmployeTableAdapter = null;
+            this.tableAdapterManager.JobTypeTableAdapter = null;
+            this.tableAdapterManager.ContrTableAdapter = null;
+            this.tableAdapterManager.MaterialTableAdapter = null;
+            this.tableAdapterManager.JobTableAdapter = null;
+            this.tableAdapterManager.StoredTableAdapter = null;
+            this.tableAdapterManager.StorageTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = EMC1.DataSetEMC1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.user_roleTableAdapter = null;
-            this.tableAdapterManager.usersTableAdapter = null;
+            this.tableAdapterManager.UserRoleTableAdapter = null;
+            this.tableAdapterManager.UserTableAdapter = null;
             // 
             // REP_NARYAD
             // 

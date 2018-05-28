@@ -31,14 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label id_matLabel;
             System.Windows.Forms.Label label5;
-            this.dataSetEMC1 = new EMC1.DataSetEMC1();
             this.label1 = new System.Windows.Forms.Label();
             this.dtp = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.planjobBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.cmbStorage = new System.Windows.Forms.ComboBox();
-            this.storageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btAdd = new System.Windows.Forms.Button();
             this.btDelete = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,17 +44,6 @@
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Количеество = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.full_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.oUT_MATERIALBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.storageDataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.planjobTableAdapter = new EMC1.DataSetEMC1TableAdapters.planjobTableAdapter();
-            this.tableAdapterManager = new EMC1.DataSetEMC1TableAdapters.TableAdapterManager();
-            this.oUT_MATERIALTableAdapter = new EMC1.DataSetEMC1TableAdapters.OUT_MATERIALTableAdapter();
-            this.storageTableAdapter = new EMC1.DataSetEMC1TableAdapters.storageTableAdapter();
-            this.dataTable1TableAdapter = new EMC1.DataSetEMC1TableAdapters.DataTable1TableAdapter();
-            this.cmbMaterial = new System.Windows.Forms.ComboBox();
-            this.cmbJob = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.idoutDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idjobsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storageidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,15 +54,37 @@
             this.idempDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.cmbMaterial = new System.Windows.Forms.ComboBox();
+            this.cmbJob = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.dataSetEMC1 = new EMC1.DataSetEMC1();
+            this.jobBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.jobTableAdapter = new EMC1.DataSetEMC1TableAdapters.JobTableAdapter();
+            this.tableAdapterManager = new EMC1.DataSetEMC1TableAdapters.TableAdapterManager();
+            this.outMaterialBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.outMaterialTableAdapter = new EMC1.DataSetEMC1TableAdapters.OutMaterialTableAdapter();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materialIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.storemanIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.planJobIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.storageIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.recipientIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.storageBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.storageTableAdapter = new EMC1.DataSetEMC1TableAdapters.StorageTableAdapter();
+            this.storedBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.storedTableAdapter = new EMC1.DataSetEMC1TableAdapters.StoredTableAdapter();
             id_matLabel = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.planjobBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.storageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gET_CURENT_STORAGEDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.oUT_MATERIALBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.storageDataTable1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.outMaterialBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storageBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storedBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // id_matLabel
@@ -96,11 +104,6 @@
             label5.Size = new System.Drawing.Size(52, 13);
             label5.TabIndex = 20;
             label5.Text = "Остатки:";
-            // 
-            // dataSetEMC1
-            // 
-            this.dataSetEMC1.DataSetName = "DataSetEMC1";
-            this.dataSetEMC1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -127,11 +130,6 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Наряд:";
             // 
-            // planjobBindingSource
-            // 
-            this.planjobBindingSource.DataMember = "planjob";
-            this.planjobBindingSource.DataSource = this.dataSetEMC1;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -144,19 +142,14 @@
             // cmbStorage
             // 
             this.cmbStorage.DataSource = this.storageBindingSource;
-            this.cmbStorage.DisplayMember = "name";
+            this.cmbStorage.DisplayMember = "Name";
             this.cmbStorage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStorage.FormattingEnabled = true;
             this.cmbStorage.Location = new System.Drawing.Point(85, 95);
             this.cmbStorage.Name = "cmbStorage";
             this.cmbStorage.Size = new System.Drawing.Size(121, 21);
             this.cmbStorage.TabIndex = 5;
-            this.cmbStorage.ValueMember = "id_storage";
-            // 
-            // storageBindingSource
-            // 
-            this.storageBindingSource.DataMember = "storage";
-            this.storageBindingSource.DataSource = this.dataSetEMC1;
+            this.cmbStorage.ValueMember = "Id";
             // 
             // btAdd
             // 
@@ -217,8 +210,16 @@
             this.iduserDataGridViewTextBoxColumn,
             this.idempDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
-            this.fullnameDataGridViewTextBoxColumn});
-            this.gET_CURENT_STORAGEDataGridView.DataSource = this.oUT_MATERIALBindingSource;
+            this.fullnameDataGridViewTextBoxColumn,
+            this.idDataGridViewTextBoxColumn,
+            this.dateDataGridViewTextBoxColumn,
+            this.materialIdDataGridViewTextBoxColumn,
+            this.countDataGridViewTextBoxColumn,
+            this.storemanIdDataGridViewTextBoxColumn,
+            this.planJobIdDataGridViewTextBoxColumn,
+            this.storageIdDataGridViewTextBoxColumn1,
+            this.recipientIdDataGridViewTextBoxColumn});
+            this.gET_CURENT_STORAGEDataGridView.DataSource = this.outMaterialBindingSource;
             this.gET_CURENT_STORAGEDataGridView.Location = new System.Drawing.Point(361, 20);
             this.gET_CURENT_STORAGEDataGridView.Name = "gET_CURENT_STORAGEDataGridView";
             this.gET_CURENT_STORAGEDataGridView.ReadOnly = true;
@@ -253,15 +254,55 @@
             this.full_name.Name = "full_name";
             this.full_name.ReadOnly = true;
             // 
-            // oUT_MATERIALBindingSource
+            // idoutDataGridViewTextBoxColumn
             // 
-            this.oUT_MATERIALBindingSource.DataMember = "FK_OUT_MATERIAL_planjob";
-            this.oUT_MATERIALBindingSource.DataSource = this.planjobBindingSource;
+            this.idoutDataGridViewTextBoxColumn.Name = "idoutDataGridViewTextBoxColumn";
+            this.idoutDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // storageDataTable1BindingSource
+            // idjobsDataGridViewTextBoxColumn
             // 
-            this.storageDataTable1BindingSource.DataMember = "storage_DataTable1";
-            this.storageDataTable1BindingSource.DataSource = this.storageBindingSource;
+            this.idjobsDataGridViewTextBoxColumn.Name = "idjobsDataGridViewTextBoxColumn";
+            this.idjobsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // storageidDataGridViewTextBoxColumn
+            // 
+            this.storageidDataGridViewTextBoxColumn.Name = "storageidDataGridViewTextBoxColumn";
+            this.storageidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idmatDataGridViewTextBoxColumn
+            // 
+            this.idmatDataGridViewTextBoxColumn.Name = "idmatDataGridViewTextBoxColumn";
+            this.idmatDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateoutDataGridViewTextBoxColumn
+            // 
+            this.dateoutDataGridViewTextBoxColumn.Name = "dateoutDataGridViewTextBoxColumn";
+            this.dateoutDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // countmatDataGridViewTextBoxColumn
+            // 
+            this.countmatDataGridViewTextBoxColumn.Name = "countmatDataGridViewTextBoxColumn";
+            this.countmatDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // iduserDataGridViewTextBoxColumn
+            // 
+            this.iduserDataGridViewTextBoxColumn.Name = "iduserDataGridViewTextBoxColumn";
+            this.iduserDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idempDataGridViewTextBoxColumn
+            // 
+            this.idempDataGridViewTextBoxColumn.Name = "idempDataGridViewTextBoxColumn";
+            this.idempDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fullnameDataGridViewTextBoxColumn
+            // 
+            this.fullnameDataGridViewTextBoxColumn.Name = "fullnameDataGridViewTextBoxColumn";
+            this.fullnameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // button1
             // 
@@ -273,61 +314,29 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // planjobTableAdapter
-            // 
-            this.planjobTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.ED_IZMTableAdapter = null;
-            this.tableAdapterManager.employessTableAdapter = null;
-            this.tableAdapterManager.jobsTableAdapter = null;
-            this.tableAdapterManager.kontrTableAdapter = null;
-            this.tableAdapterManager.materialTableAdapter = null;
-            this.tableAdapterManager.OUT_MATERIALTableAdapter = this.oUT_MATERIALTableAdapter;
-            this.tableAdapterManager.planjobTableAdapter = this.planjobTableAdapter;
-            this.tableAdapterManager.storage_nalTableAdapter = null;
-            this.tableAdapterManager.storageTableAdapter = this.storageTableAdapter;
-            this.tableAdapterManager.UpdateOrder = EMC1.DataSetEMC1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.user_roleTableAdapter = null;
-            this.tableAdapterManager.usersTableAdapter = null;
-            // 
-            // oUT_MATERIALTableAdapter
-            // 
-            this.oUT_MATERIALTableAdapter.ClearBeforeFill = true;
-            // 
-            // storageTableAdapter
-            // 
-            this.storageTableAdapter.ClearBeforeFill = true;
-            // 
-            // dataTable1TableAdapter
-            // 
-            this.dataTable1TableAdapter.ClearBeforeFill = true;
-            // 
             // cmbMaterial
             // 
-            this.cmbMaterial.DataSource = this.storageDataTable1BindingSource;
-            this.cmbMaterial.DisplayMember = "name";
+            this.cmbMaterial.DataSource = this.storedBindingSource;
+            this.cmbMaterial.DisplayMember = "StorageId";
             this.cmbMaterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMaterial.FormattingEnabled = true;
             this.cmbMaterial.Location = new System.Drawing.Point(86, 137);
             this.cmbMaterial.Name = "cmbMaterial";
             this.cmbMaterial.Size = new System.Drawing.Size(121, 21);
             this.cmbMaterial.TabIndex = 18;
-            this.cmbMaterial.ValueMember = "id_mat";
+            this.cmbMaterial.ValueMember = "MaterialId";
             // 
             // cmbJob
             // 
-            this.cmbJob.DataSource = this.planjobBindingSource;
-            this.cmbJob.DisplayMember = "id";
+            this.cmbJob.DataSource = this.jobBindingSource;
+            this.cmbJob.DisplayMember = "Id";
             this.cmbJob.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbJob.FormattingEnabled = true;
             this.cmbJob.Location = new System.Drawing.Point(85, 56);
             this.cmbJob.Name = "cmbJob";
             this.cmbJob.Size = new System.Drawing.Size(121, 21);
             this.cmbJob.TabIndex = 22;
-            this.cmbJob.ValueMember = "id";
+            this.cmbJob.ValueMember = "Id";
             // 
             // button2
             // 
@@ -341,85 +350,128 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // idoutDataGridViewTextBoxColumn
-            // 
-            this.idoutDataGridViewTextBoxColumn.DataPropertyName = "id_out";
-            this.idoutDataGridViewTextBoxColumn.HeaderText = "id_out";
-            this.idoutDataGridViewTextBoxColumn.Name = "idoutDataGridViewTextBoxColumn";
-            this.idoutDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idjobsDataGridViewTextBoxColumn
-            // 
-            this.idjobsDataGridViewTextBoxColumn.DataPropertyName = "id_jobs";
-            this.idjobsDataGridViewTextBoxColumn.HeaderText = "id_jobs";
-            this.idjobsDataGridViewTextBoxColumn.Name = "idjobsDataGridViewTextBoxColumn";
-            this.idjobsDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // storageidDataGridViewTextBoxColumn
-            // 
-            this.storageidDataGridViewTextBoxColumn.DataPropertyName = "storage_id";
-            this.storageidDataGridViewTextBoxColumn.HeaderText = "storage_id";
-            this.storageidDataGridViewTextBoxColumn.Name = "storageidDataGridViewTextBoxColumn";
-            this.storageidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idmatDataGridViewTextBoxColumn
-            // 
-            this.idmatDataGridViewTextBoxColumn.DataPropertyName = "id_mat";
-            this.idmatDataGridViewTextBoxColumn.HeaderText = "id_mat";
-            this.idmatDataGridViewTextBoxColumn.Name = "idmatDataGridViewTextBoxColumn";
-            this.idmatDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dateoutDataGridViewTextBoxColumn
-            // 
-            this.dateoutDataGridViewTextBoxColumn.DataPropertyName = "date_out";
-            this.dateoutDataGridViewTextBoxColumn.HeaderText = "date_out";
-            this.dateoutDataGridViewTextBoxColumn.Name = "dateoutDataGridViewTextBoxColumn";
-            this.dateoutDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // countmatDataGridViewTextBoxColumn
-            // 
-            this.countmatDataGridViewTextBoxColumn.DataPropertyName = "count_mat";
-            this.countmatDataGridViewTextBoxColumn.HeaderText = "count_mat";
-            this.countmatDataGridViewTextBoxColumn.Name = "countmatDataGridViewTextBoxColumn";
-            this.countmatDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // iduserDataGridViewTextBoxColumn
-            // 
-            this.iduserDataGridViewTextBoxColumn.DataPropertyName = "id_user";
-            this.iduserDataGridViewTextBoxColumn.HeaderText = "id_user";
-            this.iduserDataGridViewTextBoxColumn.Name = "iduserDataGridViewTextBoxColumn";
-            this.iduserDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idempDataGridViewTextBoxColumn
-            // 
-            this.idempDataGridViewTextBoxColumn.DataPropertyName = "id_emp";
-            this.idempDataGridViewTextBoxColumn.HeaderText = "id_emp";
-            this.idempDataGridViewTextBoxColumn.Name = "idempDataGridViewTextBoxColumn";
-            this.idempDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fullnameDataGridViewTextBoxColumn
-            // 
-            this.fullnameDataGridViewTextBoxColumn.DataPropertyName = "full_name";
-            this.fullnameDataGridViewTextBoxColumn.HeaderText = "full_name";
-            this.fullnameDataGridViewTextBoxColumn.Name = "fullnameDataGridViewTextBoxColumn";
-            this.fullnameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.storageDataTable1BindingSource, "count", true));
             this.label6.Location = new System.Drawing.Point(85, 182);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(13, 13);
             this.label6.TabIndex = 24;
             this.label6.Text = "0";
+            // 
+            // dataSetEMC1
+            // 
+            this.dataSetEMC1.DataSetName = "DataSetEMC1";
+            this.dataSetEMC1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // jobBindingSource
+            // 
+            this.jobBindingSource.DataMember = "Job";
+            this.jobBindingSource.DataSource = this.dataSetEMC1;
+            // 
+            // jobTableAdapter
+            // 
+            this.jobTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.ContrTableAdapter = null;
+            this.tableAdapterManager.EmployeTableAdapter = null;
+            this.tableAdapterManager.InMaterialTableAdapter = null;
+            this.tableAdapterManager.JobTableAdapter = this.jobTableAdapter;
+            this.tableAdapterManager.JobTypeTableAdapter = null;
+            this.tableAdapterManager.MaterialTableAdapter = null;
+            this.tableAdapterManager.OutMaterialTableAdapter = this.outMaterialTableAdapter;
+            this.tableAdapterManager.StorageTableAdapter = this.storageTableAdapter;
+            this.tableAdapterManager.StoredTableAdapter = this.storedTableAdapter;
+            this.tableAdapterManager.UnitTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = EMC1.DataSetEMC1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UserRoleTableAdapter = null;
+            this.tableAdapterManager.UserTableAdapter = null;
+            // 
+            // outMaterialBindingSource
+            // 
+            this.outMaterialBindingSource.DataMember = "FK_OutMaterial_Job";
+            this.outMaterialBindingSource.DataSource = this.jobBindingSource;
+            // 
+            // outMaterialTableAdapter
+            // 
+            this.outMaterialTableAdapter.ClearBeforeFill = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // materialIdDataGridViewTextBoxColumn
+            // 
+            this.materialIdDataGridViewTextBoxColumn.DataPropertyName = "MaterialId";
+            this.materialIdDataGridViewTextBoxColumn.HeaderText = "MaterialId";
+            this.materialIdDataGridViewTextBoxColumn.Name = "materialIdDataGridViewTextBoxColumn";
+            this.materialIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // countDataGridViewTextBoxColumn
+            // 
+            this.countDataGridViewTextBoxColumn.DataPropertyName = "Count";
+            this.countDataGridViewTextBoxColumn.HeaderText = "Count";
+            this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
+            this.countDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // storemanIdDataGridViewTextBoxColumn
+            // 
+            this.storemanIdDataGridViewTextBoxColumn.DataPropertyName = "StoremanId";
+            this.storemanIdDataGridViewTextBoxColumn.HeaderText = "StoremanId";
+            this.storemanIdDataGridViewTextBoxColumn.Name = "storemanIdDataGridViewTextBoxColumn";
+            this.storemanIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // planJobIdDataGridViewTextBoxColumn
+            // 
+            this.planJobIdDataGridViewTextBoxColumn.DataPropertyName = "PlanJobId";
+            this.planJobIdDataGridViewTextBoxColumn.HeaderText = "PlanJobId";
+            this.planJobIdDataGridViewTextBoxColumn.Name = "planJobIdDataGridViewTextBoxColumn";
+            this.planJobIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // storageIdDataGridViewTextBoxColumn1
+            // 
+            this.storageIdDataGridViewTextBoxColumn1.DataPropertyName = "StorageId";
+            this.storageIdDataGridViewTextBoxColumn1.HeaderText = "StorageId";
+            this.storageIdDataGridViewTextBoxColumn1.Name = "storageIdDataGridViewTextBoxColumn1";
+            this.storageIdDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // recipientIdDataGridViewTextBoxColumn
+            // 
+            this.recipientIdDataGridViewTextBoxColumn.DataPropertyName = "RecipientId";
+            this.recipientIdDataGridViewTextBoxColumn.HeaderText = "RecipientId";
+            this.recipientIdDataGridViewTextBoxColumn.Name = "recipientIdDataGridViewTextBoxColumn";
+            this.recipientIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // storageBindingSource
+            // 
+            this.storageBindingSource.DataMember = "Storage";
+            this.storageBindingSource.DataSource = this.dataSetEMC1;
+            // 
+            // storageTableAdapter
+            // 
+            this.storageTableAdapter.ClearBeforeFill = true;
+            // 
+            // storedBindingSource
+            // 
+            this.storedBindingSource.DataMember = "FK_Stored_Storage";
+            this.storedBindingSource.DataSource = this.storageBindingSource;
+            // 
+            // storedTableAdapter
+            // 
+            this.storedTableAdapter.ClearBeforeFill = true;
             // 
             // MatOut
             // 
@@ -447,12 +499,12 @@
             this.Name = "MatOut";
             this.Text = "Выдача материала";
             this.Load += new System.EventHandler(this.MatOut_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.planjobBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.storageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gET_CURENT_STORAGEDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.oUT_MATERIALBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.storageDataTable1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.outMaterialBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storageBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storedBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -470,16 +522,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txbCol;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.BindingSource planjobBindingSource;
-        private DataSetEMC1TableAdapters.planjobTableAdapter planjobTableAdapter;
-        private DataSetEMC1TableAdapters.TableAdapterManager tableAdapterManager;
-        private DataSetEMC1TableAdapters.storageTableAdapter storageTableAdapter;
-        private System.Windows.Forms.BindingSource storageBindingSource;
-        private DataSetEMC1TableAdapters.DataTable1TableAdapter dataTable1TableAdapter;
-        private System.Windows.Forms.BindingSource storageDataTable1BindingSource;
         private System.Windows.Forms.ComboBox cmbMaterial;
-        private System.Windows.Forms.BindingSource oUT_MATERIALBindingSource;
-        private DataSetEMC1TableAdapters.OUT_MATERIALTableAdapter oUT_MATERIALTableAdapter;
         private System.Windows.Forms.ComboBox cmbJob;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
@@ -497,5 +540,23 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fullnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label6;
+        private DataSetEMC1 dataSetEMC1;
+        private System.Windows.Forms.BindingSource jobBindingSource;
+        private DataSetEMC1TableAdapters.JobTableAdapter jobTableAdapter;
+        private DataSetEMC1TableAdapters.TableAdapterManager tableAdapterManager;
+        private DataSetEMC1TableAdapters.OutMaterialTableAdapter outMaterialTableAdapter;
+        private System.Windows.Forms.BindingSource outMaterialBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn materialIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn countDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn storemanIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn planJobIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn storageIdDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn recipientIdDataGridViewTextBoxColumn;
+        private DataSetEMC1TableAdapters.StorageTableAdapter storageTableAdapter;
+        private System.Windows.Forms.BindingSource storageBindingSource;
+        private DataSetEMC1TableAdapters.StoredTableAdapter storedTableAdapter;
+        private System.Windows.Forms.BindingSource storedBindingSource;
     }
 }
