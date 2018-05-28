@@ -21,6 +21,10 @@ namespace EMC1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.Stored". При необходимости она может быть перемещена или удалена.
+            this.storedTableAdapter.Fill(this.dataSetEMC1.Stored);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.Balance". При необходимости она может быть перемещена или удалена.
+            this.balanceTableAdapter.Fill(this.dataSetEMC1.Balance);
             SetScreen();
             new OutMaterialTableAdapter().Fill(this.dataSetEMC1.OutMaterial);
             new StorageTableAdapter().Fill(this.dataSetEMC1.Storage);

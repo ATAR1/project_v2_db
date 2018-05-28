@@ -170,18 +170,18 @@
             // comboBox1
             // 
             this.comboBox1.DataSource = this.contrBindingSource;
-            this.comboBox1.DisplayMember = "name";
+            this.comboBox1.DisplayMember = "Name";
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(124, 12);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(205, 21);
             this.comboBox1.TabIndex = 11;
-            this.comboBox1.ValueMember = "id_kontr";
+            this.comboBox1.ValueMember = "Id";
             // 
             // kontrBindingSource
             // 
-            this.contrBindingSource.DataMember = "kontr";
+            this.contrBindingSource.DataMember = "Contr";
             this.contrBindingSource.DataSource = this.dataSetEMC1;
             // 
             // kontrTableAdapter

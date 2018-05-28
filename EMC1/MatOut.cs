@@ -18,22 +18,25 @@ namespace EMC1
 
         public MatOut(DataSetEMC1 dataSet)
         {
-            this.dataSetEMC1 = dataSet;
-            InitializeComponent();          
             
+            InitializeComponent();          
+            sharedBindingSource.DataSource = dataSet;
+           
         }
 
         private void MatOut_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.Stored". При необходимости она может быть перемещена или удалена.
-            this.storedTableAdapter.Fill(this.dataSetEMC1.Stored);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.Storage". При необходимости она может быть перемещена или удалена.
-            this.storageTableAdapter.Fill(this.dataSetEMC1.Storage);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.OutMaterial". При необходимости она может быть перемещена или удалена.
-            this.outMaterialTableAdapter.Fill(this.dataSetEMC1.OutMaterial);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.Job". При необходимости она может быть перемещена или удалена.
-            this.jobTableAdapter.Fill(this.dataSetEMC1.Job);
+            //// TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.Stored". При необходимости она может быть перемещена или удалена.
+            //this.storedTableAdapter.Fill(this.dataSetEMC1.Stored);
+            //// TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.Storage". При необходимости она может быть перемещена или удалена.
+            //this.storageTableAdapter.Fill(this.dataSetEMC1.Storage);
+            //// TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.OutMaterial". При необходимости она может быть перемещена или удалена.
+            //this.outMaterialTableAdapter.Fill(this.dataSetEMC1.OutMaterial);
+            //// TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.Job". При необходимости она может быть перемещена или удалена.
+            //this.jobTableAdapter.Fill(this.dataSetEMC1.Job);
 
+            //jobBindingSource.ResetBindings(false);
+            //storageBindingSource.ResetBindings(false);
         }
 
 
@@ -43,21 +46,16 @@ namespace EMC1
         {
             if (!CheckValue())
                 return;
-
-            var jobRow = dataSetEMC1.Job.Single(pj => pj.Id == (int)cmbJob.SelectedValue);
-            var materialRow = dataSetEMC1.Material.Single(m => m.Id == (int)cmbMaterial.SelectedValue);
-            var storageRow = dataSetEMC1.Storage.Single(s => s.Id == (int)cmbStorage.SelectedValue);
-            var usersRow = dataSetEMC1.User.First();
-            var employessRow = dataSetEMC1.Employee.First();
-            dataSetEMC1.OutMaterial.AddOutMaterialRow(
-                DateTime.Now,
-                materialRow,
-                int.Parse(txbCol.Text),
-                usersRow,
-                jobRow,
-                storageRow,                
-                employessRow
-                );
+            DataSetEMC1.OutMaterialRow newRow =(DataSetEMC1.OutMaterialRow)((DataSetEMC1)sharedBindingSource.DataSource).OutMaterial.NewRow();
+            newRow.Date = DateTime.Now;
+            newRow.Count = Int32.Parse(txbCol.Text);
+            newRow.JobId = (int)cmbJob.SelectedValue;
+            newRow.MaterialId = (int)cmbMaterial.SelectedValue;
+            newRow.StorageId = (int)cmbStorage.SelectedValue;
+            newRow.StoremanId = 1;
+            newRow.RecipientId = 1;
+            ((DataSetEMC1.StoredRow)((DataRowView)storedBindingSource.Current).Row).Count -= Int32.Parse(txbCol.Text);
+            ((DataSetEMC1)sharedBindingSource.DataSource).OutMaterial.AddOutMaterialRow(newRow);
         }
 
 
@@ -89,18 +87,18 @@ namespace EMC1
             }
 
             return true;
-            //if (Convert.ToInt32(txbCol.Text) <= (int)((DataRowView)storageDataTable1BindingSource.Current).Row["count"])
-            //    return true;
-            //else
-            //{
-            //    MessageBox.Show("Недостаточно материалла на складе", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    return false;
-            //}
-        }              
+            if (Convert.ToInt32(txbCol.Text) <= ((DataSetEMC1.StoredRow)storedBindingSource.Current).Count)
+                return true;
+            else
+            {
+                MessageBox.Show("Недостаточно материалла на складе", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dataSetEMC1.HasChanges())
+            if (((DataSetEMC1)sharedBindingSource.DataSource).HasChanges())
                 if (MessageBox.Show("Есть несохранённые изменения! Отменить их?", "Внимание!", MessageBoxButtons.YesNo) != DialogResult.Yes)
                     return;
             this.Close();
@@ -108,7 +106,8 @@ namespace EMC1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.outMaterialTableAdapter.Update(dataSetEMC1);
+            this.outMaterialTableAdapter.Update((DataSetEMC1)sharedBindingSource.DataSource);
+            this.storedTableAdapter.Update((DataSetEMC1)sharedBindingSource.DataSource);
         }
     }
 }
