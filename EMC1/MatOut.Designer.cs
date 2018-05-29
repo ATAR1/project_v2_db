@@ -46,6 +46,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txbCol = new System.Windows.Forms.TextBox();
             this.gET_CURENT_STORAGEDataGridView = new System.Windows.Forms.DataGridView();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Количеество = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.full_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.cmbMaterial = new System.Windows.Forms.ComboBox();
             this.storedBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -57,9 +60,14 @@
             this.storageTableAdapter = new EMC1.DataSetEMC1TableAdapters.StorageTableAdapter();
             this.storedTableAdapter = new EMC1.DataSetEMC1TableAdapters.StoredTableAdapter();
             this.tableAdapterManager = new EMC1.DataSetEMC1TableAdapters.TableAdapterManager();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Количеество = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.full_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materialIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.storemanIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.storageIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.recipientIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             id_matLabel = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
             outMaterialBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -184,6 +192,7 @@
             this.btDelete.TabIndex = 7;
             this.btDelete.Text = "Удалить";
             this.btDelete.UseVisualStyleBackColor = true;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // label4
             // 
@@ -211,7 +220,15 @@
             this.gET_CURENT_STORAGEDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name,
             this.Количеество,
-            this.full_name});
+            this.full_name,
+            this.idDataGridViewTextBoxColumn,
+            this.dateDataGridViewTextBoxColumn,
+            this.materialIdDataGridViewTextBoxColumn,
+            this.countDataGridViewTextBoxColumn,
+            this.storemanIdDataGridViewTextBoxColumn,
+            this.jobIdDataGridViewTextBoxColumn,
+            this.storageIdDataGridViewTextBoxColumn,
+            this.recipientIdDataGridViewTextBoxColumn});
             this.gET_CURENT_STORAGEDataGridView.DataSource = outMaterialBindingSource;
             this.gET_CURENT_STORAGEDataGridView.Location = new System.Drawing.Point(361, 20);
             this.gET_CURENT_STORAGEDataGridView.Name = "gET_CURENT_STORAGEDataGridView";
@@ -219,6 +236,33 @@
             this.gET_CURENT_STORAGEDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gET_CURENT_STORAGEDataGridView.Size = new System.Drawing.Size(413, 220);
             this.gET_CURENT_STORAGEDataGridView.TabIndex = 11;
+            // 
+            // name
+            // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.name.DataPropertyName = "MaterialId";
+            this.name.Frozen = true;
+            this.name.HeaderText = "Материал";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // Количеество
+            // 
+            this.Количеество.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Количеество.DataPropertyName = "Count";
+            this.Количеество.Frozen = true;
+            this.Количеество.HeaderText = "Кол-во";
+            this.Количеество.Name = "Количеество";
+            this.Количеество.ReadOnly = true;
+            // 
+            // full_name
+            // 
+            this.full_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.full_name.DataPropertyName = "MaterialId";
+            this.full_name.Frozen = true;
+            this.full_name.HeaderText = "ед. изм. ";
+            this.full_name.Name = "full_name";
+            this.full_name.ReadOnly = true;
             // 
             // button1
             // 
@@ -315,32 +359,61 @@
             this.tableAdapterManager.UserRoleTableAdapter = null;
             this.tableAdapterManager.UserTableAdapter = null;
             // 
-            // name
+            // idDataGridViewTextBoxColumn
             // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.name.DataPropertyName = "MaterialId";
-            this.name.Frozen = true;
-            this.name.HeaderText = "Материал";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // Количеество
+            // dateDataGridViewTextBoxColumn
             // 
-            this.Количеество.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Количеество.DataPropertyName = "Count";
-            this.Количеество.Frozen = true;
-            this.Количеество.HeaderText = "Кол-во";
-            this.Количеество.Name = "Количеество";
-            this.Количеество.ReadOnly = true;
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // full_name
+            // materialIdDataGridViewTextBoxColumn
             // 
-            this.full_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.full_name.DataPropertyName = "MaterialId";
-            this.full_name.Frozen = true;
-            this.full_name.HeaderText = "ед. изм. ";
-            this.full_name.Name = "full_name";
-            this.full_name.ReadOnly = true;
+            this.materialIdDataGridViewTextBoxColumn.DataPropertyName = "MaterialId";
+            this.materialIdDataGridViewTextBoxColumn.HeaderText = "MaterialId";
+            this.materialIdDataGridViewTextBoxColumn.Name = "materialIdDataGridViewTextBoxColumn";
+            this.materialIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // countDataGridViewTextBoxColumn
+            // 
+            this.countDataGridViewTextBoxColumn.DataPropertyName = "Count";
+            this.countDataGridViewTextBoxColumn.HeaderText = "Count";
+            this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
+            this.countDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // storemanIdDataGridViewTextBoxColumn
+            // 
+            this.storemanIdDataGridViewTextBoxColumn.DataPropertyName = "StoremanId";
+            this.storemanIdDataGridViewTextBoxColumn.HeaderText = "StoremanId";
+            this.storemanIdDataGridViewTextBoxColumn.Name = "storemanIdDataGridViewTextBoxColumn";
+            this.storemanIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // jobIdDataGridViewTextBoxColumn
+            // 
+            this.jobIdDataGridViewTextBoxColumn.DataPropertyName = "JobId";
+            this.jobIdDataGridViewTextBoxColumn.HeaderText = "JobId";
+            this.jobIdDataGridViewTextBoxColumn.Name = "jobIdDataGridViewTextBoxColumn";
+            this.jobIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // storageIdDataGridViewTextBoxColumn
+            // 
+            this.storageIdDataGridViewTextBoxColumn.DataPropertyName = "StorageId";
+            this.storageIdDataGridViewTextBoxColumn.HeaderText = "StorageId";
+            this.storageIdDataGridViewTextBoxColumn.Name = "storageIdDataGridViewTextBoxColumn";
+            this.storageIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // recipientIdDataGridViewTextBoxColumn
+            // 
+            this.recipientIdDataGridViewTextBoxColumn.DataPropertyName = "RecipientId";
+            this.recipientIdDataGridViewTextBoxColumn.HeaderText = "RecipientId";
+            this.recipientIdDataGridViewTextBoxColumn.Name = "recipientIdDataGridViewTextBoxColumn";
+            this.recipientIdDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // MatOut
             // 
@@ -410,5 +483,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Количеество;
         private System.Windows.Forms.DataGridViewTextBoxColumn full_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn materialIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn countDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn storemanIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn storageIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn recipientIdDataGridViewTextBoxColumn;
     }
 }

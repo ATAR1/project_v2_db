@@ -109,5 +109,10 @@ namespace EMC1
             this.outMaterialTableAdapter.Update((DataSetEMC1)sharedBindingSource.DataSource);
             this.storedTableAdapter.Update((DataSetEMC1)sharedBindingSource.DataSource);
         }
+
+        private void btDelete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
