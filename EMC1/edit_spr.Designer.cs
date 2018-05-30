@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            EMC1.DataSetEMC1 dataSetEMC11;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(edit_spr));
-            this.dataSetEMC11 = new EMC1.DataSetEMC1();
             this.employessBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSetEMC11BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sharedDataSource = new System.Windows.Forms.BindingSource(this.components);
             this.contrBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.storageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.jobTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeeTableAdapter = new EMC1.DataSetEMC1TableAdapters.EmployeTableAdapter();
-            this.employeeTableAdapter1 = new EMC1.DataSetEMC1TableAdapters.EmployeTableAdapter();
             this.contrTableAdapter = new EMC1.DataSetEMC1TableAdapters.ContrTableAdapter();
             this.storageTableAdapter = new EMC1.DataSetEMC1TableAdapters.StorageTableAdapter();
             this.materialTableAdapter = new EMC1.DataSetEMC1TableAdapters.MaterialTableAdapter();
             this.jobTypeTableAdapter = new EMC1.DataSetEMC1TableAdapters.JobTypeTableAdapter();
             this.jobs = new System.Windows.Forms.TabPage();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.material = new System.Windows.Forms.TabPage();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,11 +52,11 @@
             this.eDIZMBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.storage = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.emp = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.streetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emp = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.telefoneDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kontr = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,21 +65,24 @@
             this.contactnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employess = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idempDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.staffDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpEdIzm = new System.Windows.Forms.TabPage();
             this.dataGridView6 = new System.Windows.Forms.DataGridView();
-            this.nameedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fullnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShortName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.unitTableAdapter = new EMC1.DataSetEMC1TableAdapters.UnitTableAdapter();
-            this.nameDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC11)).BeginInit();
+            this.shortNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shortNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataSetEMC11 = new EMC1.DataSetEMC1();
+            ((System.ComponentModel.ISupportInitialize)(dataSetEMC11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employessBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC11BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sharedDataSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contrBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
@@ -102,48 +105,44 @@
             // 
             // dataSetEMC11
             // 
-            this.dataSetEMC11.DataSetName = "DataSetEMC1";
-            this.dataSetEMC11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            dataSetEMC11.DataSetName = "DataSetEMC1";
+            dataSetEMC11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // employessBindingSource
             // 
-            this.employessBindingSource.DataMember = "employess";
-            this.employessBindingSource.DataSource = this.dataSetEMC11BindingSource;
+            this.employessBindingSource.DataMember = "Employee";
+            this.employessBindingSource.DataSource = this.sharedDataSource;
             // 
-            // dataSetEMC11BindingSource
+            // sharedDataSource
             // 
-            this.dataSetEMC11BindingSource.DataSource = this.dataSetEMC11;
-            this.dataSetEMC11BindingSource.Position = 0;
+            this.sharedDataSource.DataSource = dataSetEMC11;
+            this.sharedDataSource.Position = 0;
             // 
-            // kontrBindingSource
+            // contrBindingSource
             // 
-            this.contrBindingSource.DataMember = "kontr";
-            this.contrBindingSource.DataSource = this.dataSetEMC11BindingSource;
+            this.contrBindingSource.DataMember = "Contr";
+            this.contrBindingSource.DataSource = this.sharedDataSource;
             // 
             // storageBindingSource
             // 
-            this.storageBindingSource.DataMember = "storage";
-            this.storageBindingSource.DataSource = this.dataSetEMC11BindingSource;
+            this.storageBindingSource.DataMember = "Storage";
+            this.storageBindingSource.DataSource = this.sharedDataSource;
             // 
             // materialBindingSource
             // 
-            this.materialBindingSource.DataMember = "material";
-            this.materialBindingSource.DataSource = this.dataSetEMC11BindingSource;
+            this.materialBindingSource.DataMember = "Material";
+            this.materialBindingSource.DataSource = this.sharedDataSource;
             // 
-            // jobsBindingSource
+            // jobTypeBindingSource
             // 
-            this.jobTypeBindingSource.DataMember = "jobs";
-            this.jobTypeBindingSource.DataSource = this.dataSetEMC11BindingSource;
+            this.jobTypeBindingSource.DataMember = "JobType";
+            this.jobTypeBindingSource.DataSource = this.sharedDataSource;
             // 
-            // employessTableAdapter
+            // employeeTableAdapter
             // 
             this.employeeTableAdapter.ClearBeforeFill = true;
             // 
-            // employessTableAdapter1
-            // 
-            this.employeeTableAdapter1.ClearBeforeFill = true;
-            // 
-            // kontrTableAdapter
+            // contrTableAdapter
             // 
             this.contrTableAdapter.ClearBeforeFill = true;
             // 
@@ -155,7 +154,7 @@
             // 
             this.materialTableAdapter.ClearBeforeFill = true;
             // 
-            // jobsTableAdapter
+            // jobTypeTableAdapter
             // 
             this.jobTypeTableAdapter.ClearBeforeFill = true;
             // 
@@ -182,6 +181,12 @@
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.Size = new System.Drawing.Size(553, 349);
             this.dataGridView5.TabIndex = 0;
+            // 
+            // nameDataGridViewTextBoxColumn3
+            // 
+            this.nameDataGridViewTextBoxColumn3.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn3.HeaderText = "Тип работы";
+            this.nameDataGridViewTextBoxColumn3.Name = "nameDataGridViewTextBoxColumn3";
             // 
             // material
             // 
@@ -210,23 +215,23 @@
             // 
             // nameDataGridViewTextBoxColumn2
             // 
-            this.nameDataGridViewTextBoxColumn2.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn2.HeaderText = "Наименование";
+            this.nameDataGridViewTextBoxColumn2.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn2.HeaderText = "Название";
             this.nameDataGridViewTextBoxColumn2.Name = "nameDataGridViewTextBoxColumn2";
             // 
             // ed_izm
             // 
-            this.ed_izm.DataPropertyName = "id_ed";
+            this.ed_izm.DataPropertyName = "UnitId";
             this.ed_izm.DataSource = this.eDIZMBindingSource;
-            this.ed_izm.DisplayMember = "full_name";
+            this.ed_izm.DisplayMember = "ShortName";
             this.ed_izm.HeaderText = "ед.";
             this.ed_izm.Name = "ed_izm";
-            this.ed_izm.ValueMember = "id_ed";
+            this.ed_izm.ValueMember = "Id";
             // 
             // eDIZMBindingSource
             // 
-            this.eDIZMBindingSource.DataMember = "ED_IZM";
-            this.eDIZMBindingSource.DataSource = this.dataSetEMC11BindingSource;
+            this.eDIZMBindingSource.DataMember = "Unit";
+            this.eDIZMBindingSource.DataSource = this.sharedDataSource;
             // 
             // storage
             // 
@@ -244,51 +249,50 @@
             this.dataGridView3.AutoGenerateColumns = false;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.emp,
             this.nameDataGridViewTextBoxColumn1,
             this.cityDataGridViewTextBoxColumn,
             this.streetDataGridViewTextBoxColumn,
-            this.emp,
-            this.telefoneDataGridViewTextBoxColumn2});
+            this.phoneDataGridViewTextBoxColumn});
             this.dataGridView3.DataSource = this.storageBindingSource;
             this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView3.Location = new System.Drawing.Point(3, 3);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.Size = new System.Drawing.Size(553, 349);
             this.dataGridView3.TabIndex = 0;
-            this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
+            // 
+            // emp
+            // 
+            this.emp.DataPropertyName = "StoremanId";
+            this.emp.DataSource = this.employessBindingSource;
+            this.emp.DisplayMember = "FullName";
+            this.emp.HeaderText = "Ответственный за склад";
+            this.emp.Name = "emp";
+            this.emp.ValueMember = "Id";
             // 
             // nameDataGridViewTextBoxColumn1
             // 
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn1.HeaderText = "Наименование";
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Название";
             this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
             // 
             // cityDataGridViewTextBoxColumn
             // 
-            this.cityDataGridViewTextBoxColumn.DataPropertyName = "city";
+            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
             this.cityDataGridViewTextBoxColumn.HeaderText = "Город";
             this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
             // 
             // streetDataGridViewTextBoxColumn
             // 
-            this.streetDataGridViewTextBoxColumn.DataPropertyName = "street";
-            this.streetDataGridViewTextBoxColumn.HeaderText = "Улица";
+            this.streetDataGridViewTextBoxColumn.DataPropertyName = "Street";
+            this.streetDataGridViewTextBoxColumn.HeaderText = "Адрес";
             this.streetDataGridViewTextBoxColumn.Name = "streetDataGridViewTextBoxColumn";
             // 
-            // emp
+            // phoneDataGridViewTextBoxColumn
             // 
-            this.emp.DataPropertyName = "id_emp";
-            this.emp.DataSource = this.employessBindingSource;
-            this.emp.DisplayMember = "fio";
-            this.emp.HeaderText = "Ответственный за склад";
-            this.emp.Name = "emp";
-            this.emp.ValueMember = "id_emp";
-            // 
-            // telefoneDataGridViewTextBoxColumn2
-            // 
-            this.telefoneDataGridViewTextBoxColumn2.DataPropertyName = "telefone";
-            this.telefoneDataGridViewTextBoxColumn2.HeaderText = "Контактный телефон";
-            this.telefoneDataGridViewTextBoxColumn2.Name = "telefoneDataGridViewTextBoxColumn2";
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "Телефон";
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
             // 
             // kontr
             // 
@@ -319,25 +323,25 @@
             // 
             // nameDataGridViewTextBoxColumn
             // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             this.nameDataGridViewTextBoxColumn.HeaderText = "Наименование";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             // 
             // telefoneDataGridViewTextBoxColumn1
             // 
-            this.telefoneDataGridViewTextBoxColumn1.DataPropertyName = "telefone";
+            this.telefoneDataGridViewTextBoxColumn1.DataPropertyName = "Phone";
             this.telefoneDataGridViewTextBoxColumn1.HeaderText = "Телефон";
             this.telefoneDataGridViewTextBoxColumn1.Name = "telefoneDataGridViewTextBoxColumn1";
             // 
             // adressDataGridViewTextBoxColumn
             // 
-            this.adressDataGridViewTextBoxColumn.DataPropertyName = "adress";
+            this.adressDataGridViewTextBoxColumn.DataPropertyName = "Adress";
             this.adressDataGridViewTextBoxColumn.HeaderText = "Адрес";
             this.adressDataGridViewTextBoxColumn.Name = "adressDataGridViewTextBoxColumn";
             // 
             // contactnameDataGridViewTextBoxColumn
             // 
-            this.contactnameDataGridViewTextBoxColumn.DataPropertyName = "contactname";
+            this.contactnameDataGridViewTextBoxColumn.DataPropertyName = "ContactPerson";
             this.contactnameDataGridViewTextBoxColumn.HeaderText = "Контактное лицо";
             this.contactnameDataGridViewTextBoxColumn.Name = "contactnameDataGridViewTextBoxColumn";
             // 
@@ -349,7 +353,7 @@
             this.employess.Padding = new System.Windows.Forms.Padding(3);
             this.employess.Size = new System.Drawing.Size(559, 355);
             this.employess.TabIndex = 0;
-            this.employess.Text = "Должности";
+            this.employess.Text = "Персонал";
             this.employess.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
@@ -357,7 +361,6 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idempDataGridViewTextBoxColumn,
             this.staffDataGridViewTextBoxColumn,
             this.fioDataGridViewTextBoxColumn,
             this.telefoneDataGridViewTextBoxColumn});
@@ -368,31 +371,23 @@
             this.dataGridView1.Size = new System.Drawing.Size(553, 349);
             this.dataGridView1.TabIndex = 0;
             // 
-            // idempDataGridViewTextBoxColumn
-            // 
-            this.idempDataGridViewTextBoxColumn.DataPropertyName = "id_emp";
-            this.idempDataGridViewTextBoxColumn.HeaderText = "";
-            this.idempDataGridViewTextBoxColumn.Name = "idempDataGridViewTextBoxColumn";
-            this.idempDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idempDataGridViewTextBoxColumn.Visible = false;
-            // 
             // staffDataGridViewTextBoxColumn
             // 
-            this.staffDataGridViewTextBoxColumn.DataPropertyName = "staff";
+            this.staffDataGridViewTextBoxColumn.DataPropertyName = "Staff";
             this.staffDataGridViewTextBoxColumn.HeaderText = "Должность";
             this.staffDataGridViewTextBoxColumn.Name = "staffDataGridViewTextBoxColumn";
             this.staffDataGridViewTextBoxColumn.ToolTipText = "Должность";
             // 
             // fioDataGridViewTextBoxColumn
             // 
-            this.fioDataGridViewTextBoxColumn.DataPropertyName = "fio";
+            this.fioDataGridViewTextBoxColumn.DataPropertyName = "FullName";
             this.fioDataGridViewTextBoxColumn.HeaderText = "ФИО";
             this.fioDataGridViewTextBoxColumn.Name = "fioDataGridViewTextBoxColumn";
             this.fioDataGridViewTextBoxColumn.ToolTipText = "ФИО";
             // 
             // telefoneDataGridViewTextBoxColumn
             // 
-            this.telefoneDataGridViewTextBoxColumn.DataPropertyName = "telefone";
+            this.telefoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
             this.telefoneDataGridViewTextBoxColumn.HeaderText = "Телефон";
             this.telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
             this.telefoneDataGridViewTextBoxColumn.ToolTipText = "Телефон";
@@ -427,8 +422,11 @@
             this.dataGridView6.AutoGenerateColumns = false;
             this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView6.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nameedDataGridViewTextBoxColumn,
-            this.fullnameDataGridViewTextBoxColumn});
+            this.ShortName,
+            this.FullName,
+            this.idDataGridViewTextBoxColumn,
+            this.shortNameDataGridViewTextBoxColumn1,
+            this.fullNameDataGridViewTextBoxColumn});
             this.dataGridView6.DataSource = this.eDIZMBindingSource;
             this.dataGridView6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView6.Location = new System.Drawing.Point(3, 3);
@@ -436,17 +434,17 @@
             this.dataGridView6.Size = new System.Drawing.Size(553, 349);
             this.dataGridView6.TabIndex = 0;
             // 
-            // nameedDataGridViewTextBoxColumn
+            // ShortName
             // 
-            this.nameedDataGridViewTextBoxColumn.DataPropertyName = "name_ed";
-            this.nameedDataGridViewTextBoxColumn.HeaderText = "Короткое наименование";
-            this.nameedDataGridViewTextBoxColumn.Name = "nameedDataGridViewTextBoxColumn";
+            this.ShortName.DataPropertyName = "ShortName";
+            this.ShortName.HeaderText = "Краткое название";
+            this.ShortName.Name = "ShortName";
             // 
-            // fullnameDataGridViewTextBoxColumn
+            // FullName
             // 
-            this.fullnameDataGridViewTextBoxColumn.DataPropertyName = "full_name";
-            this.fullnameDataGridViewTextBoxColumn.HeaderText = "Полное наименование";
-            this.fullnameDataGridViewTextBoxColumn.Name = "fullnameDataGridViewTextBoxColumn";
+            this.FullName.DataPropertyName = "FullName";
+            this.FullName.HeaderText = "Полное название";
+            this.FullName.Name = "FullName";
             // 
             // button1
             // 
@@ -459,15 +457,34 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // eD_IZMTableAdapter
+            // unitTableAdapter
             // 
             this.unitTableAdapter.ClearBeforeFill = true;
             // 
-            // nameDataGridViewTextBoxColumn3
+            // shortNameDataGridViewTextBoxColumn
             // 
-            this.nameDataGridViewTextBoxColumn3.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn3.HeaderText = "Наименование";
-            this.nameDataGridViewTextBoxColumn3.Name = "nameDataGridViewTextBoxColumn3";
+            this.shortNameDataGridViewTextBoxColumn.DataPropertyName = "ShortName";
+            this.shortNameDataGridViewTextBoxColumn.HeaderText = "Краткое название";
+            this.shortNameDataGridViewTextBoxColumn.Name = "shortNameDataGridViewTextBoxColumn";
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // shortNameDataGridViewTextBoxColumn1
+            // 
+            this.shortNameDataGridViewTextBoxColumn1.DataPropertyName = "ShortName";
+            this.shortNameDataGridViewTextBoxColumn1.HeaderText = "ShortName";
+            this.shortNameDataGridViewTextBoxColumn1.Name = "shortNameDataGridViewTextBoxColumn1";
+            // 
+            // fullNameDataGridViewTextBoxColumn
+            // 
+            this.fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
+            this.fullNameDataGridViewTextBoxColumn.HeaderText = "FullName";
+            this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
             // 
             // edit_spr
             // 
@@ -478,10 +495,10 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "edit_spr";
             this.Text = "Справочники";
-            this.Load += new System.EventHandler(this.edit_spr_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC11)).EndInit();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.edit_spr_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(dataSetEMC11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employessBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC11BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sharedDataSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contrBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.storageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).EndInit();
@@ -505,12 +522,8 @@
         }
 
         #endregion
-
-        private DataSetEMC1 dataSetEMC11;
-        private System.Windows.Forms.BindingSource dataSetEMC11BindingSource;
         private System.Windows.Forms.BindingSource employessBindingSource;
         private DataSetEMC1TableAdapters.EmployeTableAdapter employeeTableAdapter;
-        private DataSetEMC1TableAdapters.EmployeTableAdapter employeeTableAdapter1;
         private System.Windows.Forms.BindingSource contrBindingSource;
         private DataSetEMC1TableAdapters.ContrTableAdapter contrTableAdapter;
         private System.Windows.Forms.BindingSource storageBindingSource;
@@ -527,31 +540,38 @@
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.TabPage kontr;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn adressDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contactnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.TabPage employess;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idempDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn staffDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.BindingSource eDIZMBindingSource;
         private DataSetEMC1TableAdapters.UnitTableAdapter unitTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ed_izm;
         private System.Windows.Forms.TabPage tpEdIzm;
         private System.Windows.Forms.DataGridView dataGridView6;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameedDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fullnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.BindingSource sharedDataSource;
+        private System.Windows.Forms.DataGridViewComboBoxColumn emp;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn streetDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn emp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn adressDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contactnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn staffDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ed_izm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShortName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn shortNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn shortNameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
     }
 }

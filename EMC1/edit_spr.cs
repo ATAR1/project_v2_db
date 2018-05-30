@@ -12,52 +12,36 @@ namespace EMC1
 {
     public partial class edit_spr : Form
     {
-        public edit_spr()
+        public edit_spr(DataSetEMC1 dataSet)
         {
             InitializeComponent();
+            sharedDataSource.DataSource = dataSet;
         }
-
-        private void edit_spr_Load(object sender, EventArgs e)
-        {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC11.ED_IZM". При необходимости она может быть перемещена или удалена.
-            this.unitTableAdapter.Fill(this.dataSetEMC11.Unit);
-            this.employeeTableAdapter.Fill(this.dataSetEMC11.Employee);
-            this.contrTableAdapter.Fill(this.dataSetEMC11.Contr);
-            this.storageTableAdapter.Fill(this.dataSetEMC11.Storage);
-            this.materialTableAdapter.Fill(this.dataSetEMC11.Material);
-            this.jobTypeTableAdapter.Fill(this.dataSetEMC11.JobType);
-        }
+        
 
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            switch (tabControl1.SelectedTab.Name)
-            {
-                case "employess":
-                    this.employeeTableAdapter.Update(this.dataSetEMC11.Employee);
-                    break;
-                case "kontr":
-                    this.contrTableAdapter.Update(this.dataSetEMC11.Contr);
-                    break;
-                case "storage":
-                    this.storageTableAdapter.Update(this.dataSetEMC11.Storage);
-                    break;
-                case "material":
-                    this.materialTableAdapter.Update(this.dataSetEMC11.Material);
-                    break;
-                case "jobs":
-                    this.jobTypeTableAdapter.Update(this.dataSetEMC11.JobType);
-                    break;
-                case "tpEdIzm":
-                    this.unitTableAdapter.Update(this.dataSetEMC11.Unit);
-                    break;
-            }//switch
+            var dataSetEMC11 = ((DataSetEMC1)sharedDataSource.DataSource);
+            this.employeeTableAdapter.Update(dataSetEMC11.Employee);
+            this.contrTableAdapter.Update(dataSetEMC11.Contr);
+            this.storageTableAdapter.Update(dataSetEMC11.Storage);
+            this.materialTableAdapter.Update(dataSetEMC11.Material);
+            this.jobTypeTableAdapter.Update(dataSetEMC11.JobType);
+            this.unitTableAdapter.Update(dataSetEMC11.Unit);
         }
 
-        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void edit_spr_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            if (((DataSetEMC1)sharedDataSource.DataSource).HasChanges())
+                if (MessageBox.Show("Есть несохранённые изменения! Отменить их?", "Внимание!", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    ((DataSetEMC1)sharedDataSource.DataSource).RejectChanges();
+                }
         }
-
     }
 }

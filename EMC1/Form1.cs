@@ -31,6 +31,7 @@ namespace EMC1
             new MaterialTableAdapter().Fill(dataSetEMC1.Material);
             new UnitTableAdapter().Fill(dataSetEMC1.Unit);
             new ContrTableAdapter().Fill(dataSetEMC1.Contr);
+            new JobTypeTableAdapter().Fill(dataSetEMC1.JobType);
             label4.Text = "Здравствуйте сегодня  " + DateTime.Now.ToShortDateString();
         }
 
@@ -55,7 +56,7 @@ namespace EMC1
 
         private void btSPrClick(object sender, EventArgs e)
         {
-            edit_spr edit_spr = new edit_spr();
+            edit_spr edit_spr = new edit_spr(dataSetEMC1);
             edit_spr.ShowDialog();
             this.storageTableAdapter.Fill(this.dataSetEMC1.Storage);
         }
