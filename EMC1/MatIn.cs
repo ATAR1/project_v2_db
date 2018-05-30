@@ -13,18 +13,12 @@ namespace EMC1
 {
     public partial class MatIn : Form
     {
-        public MatIn()
+        public MatIn(DataSetEMC1 dataSet)
         {
             InitializeComponent();
+            sharedDataSource.DataSource = dataSet;
         }
-
-        private void MatIn_Load(object sender, EventArgs e)
-        {
-            this.unitTableAdapter1.Fill(this.dataSetEMC1.Unit);
-            this.contrTableAdapter.Fill(this.dataSetEMC1.Contr);
-            this.storageTableAdapter.Fill(this.dataSetEMC1.Storage);
-            this.materialTableAdapter.Fill(this.dataSetEMC1.Material);
-        }
+        
 
         private void btSave_Click(object sender, EventArgs e)
         {
@@ -63,89 +57,44 @@ namespace EMC1
 
         private bool SaveData()
         {
-            decimal count = decimal.Parse(txbCol.Text);
-            decimal count_old = 0;
-
-            bool result = false;
-
-            using(SqlConnection connection = new SqlConnection(User.connectionStr))
+            var count = Int32.Parse(txbCol.Text);
+            var dataSet = ((DataSetEMC1)this.sharedDataSource.DataSource);
+            var newRow = (DataSetEMC1.InMaterialRow)dataSet.InMaterial.NewRow();
+            newRow.ContractorId = ((DataSetEMC1.ContrRow)((DataRowView)this.contrBindingSource.Current).Row).Id;
+            newRow.Date = DateTime.Now;
+            newRow.Count = count;
+            newRow.MaterialId = ((DataSetEMC1.MaterialRow)((DataRowView)this.materialBindingSource.Current).Row).Id;
+            newRow.StoremanId = 1;
+            newRow.StorageId = ((DataSetEMC1.StorageRow)((DataRowView)this.storageBindingSource.Current).Row).Id;
+            dataSet.InMaterial.AddInMaterialRow(newRow);
+            if (((DataSetEMC1.StorageRow)((DataRowView)this.storageBindingSource.Current).Row).GetStoredRows().Any(sr => sr.MaterialId == newRow.MaterialId))
             {
-                SqlCommand command = new SqlCommand();
-                command.Connection = connection;
-                //command.CommandText = "select count from storage_nal where id_storage = " 
-                //    + cmbStorage.SelectedValue.ToString() + " and id_mat = " + cmbMat.SelectedValue.ToString();
-                connection.Open();
-                try
-                {
-                    count_old = decimal.Parse(command.ExecuteScalar().ToString());
-                }
-                catch (Exception)
-                {
-                    count_old = 0;
-                }
-                finally
-                {
-                    command.Dispose();
-                }
-            }
-
-            if(count_old == 0)
-            {
-                DataSetEMC1.StoredRow NewRow = dataSetEMC1.Stored.NewStoredRow();
-                NewRow.Count = decimal.Parse(txbCol.Text);
-                NewRow.StorageId = (int)cmbStorage.SelectedValue;
-                NewRow.MaterialId = (int)cmbMat.SelectedValue;
-                dataSetEMC1.Stored.Rows.Add(NewRow);
-                try
-                {
-                    this.storedTableAdapter1.Update(this.dataSetEMC1.Stored);
-                    
-                    result = true;
-                }
-                catch (Exception)
-                {
-                    result = false;
-                }
+                ((DataSetEMC1.StorageRow)((DataRowView)this.storageBindingSource.Current).Row).GetStoredRows().Single(sr => sr.MaterialId == newRow.MaterialId)
+                    .Count += count;
             }
             else
             {
-                count += count_old;
-                using (SqlConnection connection = new SqlConnection(User.connectionStr))
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
-                    //command.CommandText = "update storage_nal set count = " + count + " where id_storage = "
-                    //    + cmbStorage.SelectedValue.ToString() + " and id_mat = " + cmbMat.SelectedValue.ToString();
-                    connection.Open();
-                    try
-                    {
-                        command.ExecuteNonQuery();
-                        result = true;
-                    }
-                    catch (Exception)
-                    {
-                        result = false;
-                    }
-                    finally
-                    {
-                        command.Dispose();
-                    }
-                }
+                var newStoredRow = (DataSetEMC1.StoredRow)dataSet.Stored.NewRow();
+                newStoredRow.StorageId = newRow.StorageId;
+                newStoredRow.MaterialId = newRow.MaterialId;
+                newStoredRow.Count = count;
+                dataSet.Stored.AddStoredRow(newStoredRow);
             }
-
-            if(result)
-                MessageBox.Show("Данные сохранены", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else
+            var storedAdapter = new DataSetEMC1TableAdapters.StoredTableAdapter();
+            var inMaterialAdapter = new DataSetEMC1TableAdapters.InMaterialTableAdapter();
+            var connection = storedAdapter.Connection;
+            inMaterialAdapter.Connection = connection;
+            connection.Open();
+            using (SqlTransaction transaction = connection.BeginTransaction())
             {
-                MessageBox.Show("Не удалось сохранить данные", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.dataSetEMC1.Stored.Clear();
+                storedAdapter.Transaction = transaction;
+                inMaterialAdapter.Transaction = transaction;
+                storedAdapter.Update(dataSet);
+                inMaterialAdapter.Update(dataSet);
+                transaction.Commit();
             }
-                
-
-            return result;
-           
-
-
+            MessageBox.Show("Данные сохранены", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return true;
         }
 
         private void btCancel_Click(object sender, EventArgs e)

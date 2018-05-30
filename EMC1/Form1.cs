@@ -30,6 +30,7 @@ namespace EMC1
             new EmployeTableAdapter().Fill(dataSetEMC1.Employee);
             new MaterialTableAdapter().Fill(dataSetEMC1.Material);
             new UnitTableAdapter().Fill(dataSetEMC1.Unit);
+            new ContrTableAdapter().Fill(dataSetEMC1.Contr);
             label4.Text = "Здравствуйте сегодня  " + DateTime.Now.ToShortDateString();
         }
 
@@ -61,7 +62,7 @@ namespace EMC1
 
         private void btInMatClick(object sender, EventArgs e)
         {
-            MatIn matin = new MatIn();
+            MatIn matin = new MatIn(this.dataSetEMC1);
             matin.ShowDialog();
             this.storageTableAdapter.Fill(this.dataSetEMC1.Storage);
         }

@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MatIn));
             this.cmbMat = new System.Windows.Forms.ComboBox();
             this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sharedDataSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetEMC1 = new EMC1.DataSetEMC1();
             this.label1 = new System.Windows.Forms.Label();
             this.materialTableAdapter = new EMC1.DataSetEMC1TableAdapters.MaterialTableAdapter();
@@ -50,7 +51,9 @@
             this.storedTableAdapter1 = new EMC1.DataSetEMC1TableAdapters.StoredTableAdapter();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.unitTableAdapter1 = new EMC1.DataSetEMC1TableAdapters.UnitTableAdapter();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sharedDataSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contrBindingSource)).BeginInit();
@@ -71,8 +74,13 @@
             // 
             // materialBindingSource
             // 
-            this.materialBindingSource.DataMember = "material";
-            this.materialBindingSource.DataSource = this.dataSetEMC1;
+            this.materialBindingSource.DataMember = "Material";
+            this.materialBindingSource.DataSource = this.sharedDataSource;
+            // 
+            // sharedDataSource
+            // 
+            this.sharedDataSource.DataSource = this.dataSetEMC1;
+            this.sharedDataSource.Position = 0;
             // 
             // dataSetEMC1
             // 
@@ -115,8 +123,8 @@
             // 
             // storageBindingSource
             // 
-            this.storageBindingSource.DataMember = "storage";
-            this.storageBindingSource.DataSource = this.dataSetEMC1;
+            this.storageBindingSource.DataMember = "Storage";
+            this.storageBindingSource.DataSource = this.sharedDataSource;
             // 
             // storageTableAdapter
             // 
@@ -127,9 +135,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(14, 101);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 13);
+            this.label3.Size = new System.Drawing.Size(69, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Количество, м:";
+            this.label3.Text = "Количество:";
             // 
             // txbCol
             // 
@@ -137,6 +145,7 @@
             this.txbCol.Name = "txbCol";
             this.txbCol.Size = new System.Drawing.Size(165, 20);
             this.txbCol.TabIndex = 5;
+            this.txbCol.Text = "0";
             // 
             // btSave
             // 
@@ -182,7 +191,7 @@
             // contrBindingSource
             // 
             this.contrBindingSource.DataMember = "Contr";
-            this.contrBindingSource.DataSource = this.dataSetEMC1;
+            this.contrBindingSource.DataSource = this.sharedDataSource;
             // 
             // contrTableAdapter
             // 
@@ -206,11 +215,21 @@
             // 
             this.unitTableAdapter1.ClearBeforeFill = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.materialBindingSource, "UnitShortName", true));
+            this.label4.Location = new System.Drawing.Point(296, 101);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 13);
+            this.label4.TabIndex = 13;
+            // 
             // MatIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(578, 175);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label5);
@@ -225,8 +244,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MatIn";
             this.Text = "Прием материала на склад";
-            this.Load += new System.EventHandler(this.MatIn_Load);
             ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sharedDataSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.storageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contrBindingSource)).EndInit();
@@ -259,5 +278,7 @@
         private DataSetEMC1TableAdapters.StoredTableAdapter storedTableAdapter1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private DataSetEMC1TableAdapters.UnitTableAdapter unitTableAdapter1;
+        private System.Windows.Forms.BindingSource sharedDataSource;
+        private System.Windows.Forms.Label label4;
     }
 }
