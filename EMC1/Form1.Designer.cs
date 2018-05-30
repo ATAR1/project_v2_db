@@ -33,6 +33,11 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.mat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.storageIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materialIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.balanceStrDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materialNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storedBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.storageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sharedDataSource = new System.Windows.Forms.BindingSource(this.components);
@@ -51,11 +56,7 @@
             this.storageTableAdapter = new EMC1.DataSetEMC1TableAdapters.StorageTableAdapter();
             this.storedTableAdapter = new EMC1.DataSetEMC1TableAdapters.StoredTableAdapter();
             this.lblUser = new System.Windows.Forms.Label();
-            this.storageIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materialIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.balanceStrDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materialNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storedBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storageBindingSource)).BeginInit();
@@ -111,6 +112,41 @@
             this.count.HeaderText = "Остаток";
             this.count.Name = "count";
             this.count.ReadOnly = true;
+            // 
+            // storageIdDataGridViewTextBoxColumn
+            // 
+            this.storageIdDataGridViewTextBoxColumn.DataPropertyName = "StorageId";
+            this.storageIdDataGridViewTextBoxColumn.HeaderText = "StorageId";
+            this.storageIdDataGridViewTextBoxColumn.Name = "storageIdDataGridViewTextBoxColumn";
+            this.storageIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // materialIdDataGridViewTextBoxColumn
+            // 
+            this.materialIdDataGridViewTextBoxColumn.DataPropertyName = "MaterialId";
+            this.materialIdDataGridViewTextBoxColumn.HeaderText = "MaterialId";
+            this.materialIdDataGridViewTextBoxColumn.Name = "materialIdDataGridViewTextBoxColumn";
+            this.materialIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // countDataGridViewTextBoxColumn
+            // 
+            this.countDataGridViewTextBoxColumn.DataPropertyName = "Count";
+            this.countDataGridViewTextBoxColumn.HeaderText = "Count";
+            this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
+            this.countDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // balanceStrDataGridViewTextBoxColumn
+            // 
+            this.balanceStrDataGridViewTextBoxColumn.DataPropertyName = "BalanceStr";
+            this.balanceStrDataGridViewTextBoxColumn.HeaderText = "BalanceStr";
+            this.balanceStrDataGridViewTextBoxColumn.Name = "balanceStrDataGridViewTextBoxColumn";
+            this.balanceStrDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // materialNameDataGridViewTextBoxColumn
+            // 
+            this.materialNameDataGridViewTextBoxColumn.DataPropertyName = "MaterialName";
+            this.materialNameDataGridViewTextBoxColumn.HeaderText = "MaterialName";
+            this.materialNameDataGridViewTextBoxColumn.Name = "materialNameDataGridViewTextBoxColumn";
+            this.materialNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // storedBindingSource
             // 
@@ -263,46 +299,22 @@
             this.lblUser.Text = "Пользователь";
             this.lblUser.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // storageIdDataGridViewTextBoxColumn
+            // button3
             // 
-            this.storageIdDataGridViewTextBoxColumn.DataPropertyName = "StorageId";
-            this.storageIdDataGridViewTextBoxColumn.HeaderText = "StorageId";
-            this.storageIdDataGridViewTextBoxColumn.Name = "storageIdDataGridViewTextBoxColumn";
-            this.storageIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // materialIdDataGridViewTextBoxColumn
-            // 
-            this.materialIdDataGridViewTextBoxColumn.DataPropertyName = "MaterialId";
-            this.materialIdDataGridViewTextBoxColumn.HeaderText = "MaterialId";
-            this.materialIdDataGridViewTextBoxColumn.Name = "materialIdDataGridViewTextBoxColumn";
-            this.materialIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // countDataGridViewTextBoxColumn
-            // 
-            this.countDataGridViewTextBoxColumn.DataPropertyName = "Count";
-            this.countDataGridViewTextBoxColumn.HeaderText = "Count";
-            this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
-            this.countDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // balanceStrDataGridViewTextBoxColumn
-            // 
-            this.balanceStrDataGridViewTextBoxColumn.DataPropertyName = "BalanceStr";
-            this.balanceStrDataGridViewTextBoxColumn.HeaderText = "BalanceStr";
-            this.balanceStrDataGridViewTextBoxColumn.Name = "balanceStrDataGridViewTextBoxColumn";
-            this.balanceStrDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // materialNameDataGridViewTextBoxColumn
-            // 
-            this.materialNameDataGridViewTextBoxColumn.DataPropertyName = "MaterialName";
-            this.materialNameDataGridViewTextBoxColumn.HeaderText = "MaterialName";
-            this.materialNameDataGridViewTextBoxColumn.Name = "materialNameDataGridViewTextBoxColumn";
-            this.materialNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.button3.Location = new System.Drawing.Point(771, 219);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(132, 23);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "Пользователи";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(919, 542);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView2);
@@ -360,6 +372,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn countDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn balanceStrDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn materialNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button button3;
     }
 }
 

@@ -40,39 +40,39 @@ namespace EMC1
 
             using (SqlConnection connection = new SqlConnection())
             {
-                int id_user = 0;
-                
-                
+                User.role = 4;
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                this.Close();
 
                 //connection.ConnectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\DB\\emcDB.mdf;Integrated Security=True;Connect Timeout=30";
 
 
-                connection.ConnectionString = Properties.Settings.Default.DB_EMC1ConnectionString;
+                //connection.ConnectionString = Properties.Settings.Default.DB_EMC1ConnectionString;
 
-                SqlCommand command = new SqlCommand();
-                command.Connection = connection;
-                command.CommandText = "select id from [User] where login = '" + txbLogin.Text + "' and pwd = " + txbPWD.Text;
+                //SqlCommand command = new SqlCommand();
+                //command.Connection = connection;
+                //command.CommandText = "select id from [User] where login = '" + txbLogin.Text + "' and pwd = " + txbPWD.Text;
                 
-                try
-                {
-                    connection.Open();
-                    Int32.TryParse(command.ExecuteScalar().ToString(), out id_user);
-                    command.CommandText = "select UserRoleId from [User] where id = " + id_user.ToString();
-                    User.role = (int)command.ExecuteScalar();
-                    User.connectionStr = connection.ConnectionString;
-                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                    this.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Нет доступа к системе");
-                    this.DialogResult = System.Windows.Forms.DialogResult.No;
-                    this.Close();
-                }
-                finally
-                {
-                    command.Dispose();
-                }
+                //try
+                //{
+                //    connection.Open();
+                //    Int32.TryParse(command.ExecuteScalar().ToString(), out id_user);
+                //    command.CommandText = "select UserRoleId from [User] where id = " + id_user.ToString();
+                //    User.role = (int)command.ExecuteScalar();
+                //    User.connectionStr = connection.ConnectionString;
+                //    this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                    
+                //}
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show("Нет доступа к системе");
+                //    this.DialogResult = System.Windows.Forms.DialogResult.No;
+                //    this.Close();
+                //}
+                //finally
+                //{
+                //    command.Dispose();
+                //}
 
 
             }
