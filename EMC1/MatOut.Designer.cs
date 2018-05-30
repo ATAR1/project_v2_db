@@ -368,6 +368,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MatOut";
             this.Text = "Выдача материала";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MatOut_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(outMaterialBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.jobBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedBindingSource)).EndInit();

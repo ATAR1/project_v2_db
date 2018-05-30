@@ -17,15 +17,10 @@ namespace EMC1
     {
 
         public MatOut(DataSetEMC1 dataSet)
-        {
-            
+        {            
             InitializeComponent();          
-            sharedBindingSource.DataSource = dataSet;
-           
+            sharedBindingSource.DataSource = dataSet;           
         }
-
-
-
 
         private void btOut_Click(object sender, EventArgs e)
         {
@@ -82,9 +77,7 @@ namespace EMC1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (((DataSetEMC1)sharedBindingSource.DataSource).HasChanges())
-                if (MessageBox.Show("Есть несохранённые изменения! Отменить их?", "Внимание!", MessageBoxButtons.YesNo) != DialogResult.Yes)
-                    return;
+            
             this.Close();
         }
 
@@ -114,6 +107,19 @@ namespace EMC1
                     .Count += outMaterialTableRow.Count;
                 outMaterialTableRow.Delete();
             }
+        }
+
+        private void MatOut_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (((DataSetEMC1)sharedBindingSource.DataSource).HasChanges())
+                if (MessageBox.Show("Есть несохранённые изменения! Отменить их?", "Внимание!", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    ((DataSetEMC1)sharedBindingSource.DataSource).RejectChanges();
+                }
         }
     }
 }
