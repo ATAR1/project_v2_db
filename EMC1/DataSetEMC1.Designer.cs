@@ -529,7 +529,7 @@ namespace EMC1 {
             base.Tables.Add(this.tableEmployee);
             this.tableJobType = new JobTypeDataTable();
             base.Tables.Add(this.tableJobType);
-            this.tableMaterial = new MaterialDataTable();
+            this.tableMaterial = new MaterialDataTable(false);
             base.Tables.Add(this.tableMaterial);
             this.tableJob = new JobDataTable();
             base.Tables.Add(this.tableJob);
@@ -749,8 +749,11 @@ namespace EMC1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitExpressions() {
+            this.Material.UnitShortNameColumn.Expression = "Parent.ShortName";
             this.OutMaterial.MaterialNameColumn.Expression = "Parent(FK_OutMaterial_Material).Name";
-            this.Stored.BalanceStrColumn.Expression = "Count+\' \'+ShortName";
+            this.OutMaterial.MaterialUnitShortNameColumn.Expression = "Parent(FK_OutMaterial_Material).UnitShortName";
+            this.Stored.BalanceStrColumn.Expression = "Count+\' \'+Parent(FK_Stored_Material).UnitShortName";
+            this.Stored.MaterialNameColumn.Expression = "Parent(FK_Stored_Material).Name";
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1389,12 +1392,23 @@ namespace EMC1 {
             
             private global::System.Data.DataColumn columnUnitId;
             
+            private global::System.Data.DataColumn columnUnitShortName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MaterialDataTable() {
+            public MaterialDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MaterialDataTable(bool initExpressions) {
                 this.TableName = "Material";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -1448,6 +1462,14 @@ namespace EMC1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn UnitShortNameColumn {
+                get {
+                    return this.columnUnitShortName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1483,11 +1505,29 @@ namespace EMC1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MaterialRow AddMaterialRow(string Name, UnitRow parentUnitRowByFK_Material_Unit, string UnitShortName) {
+                MaterialRow rowMaterialRow = ((MaterialRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        Name,
+                        null,
+                        UnitShortName};
+                if ((parentUnitRowByFK_Material_Unit != null)) {
+                    columnValuesArray[2] = parentUnitRowByFK_Material_Unit[0];
+                }
+                rowMaterialRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowMaterialRow);
+                return rowMaterialRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public MaterialRow AddMaterialRow(string Name, UnitRow parentUnitRowByFK_Material_Unit) {
                 MaterialRow rowMaterialRow = ((MaterialRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Name,
+                        null,
                         null};
                 if ((parentUnitRowByFK_Material_Unit != null)) {
                     columnValuesArray[2] = parentUnitRowByFK_Material_Unit[0];
@@ -1524,6 +1564,7 @@ namespace EMC1 {
                 this.columnId = base.Columns["Id"];
                 this.columnName = base.Columns["Name"];
                 this.columnUnitId = base.Columns["UnitId"];
+                this.columnUnitShortName = base.Columns["UnitShortName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1535,6 +1576,8 @@ namespace EMC1 {
                 base.Columns.Add(this.columnName);
                 this.columnUnitId = new global::System.Data.DataColumn("UnitId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUnitId);
+                this.columnUnitShortName = new global::System.Data.DataColumn("UnitShortName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUnitShortName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -1544,6 +1587,7 @@ namespace EMC1 {
                 this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
                 this.columnName.MaxLength = 50;
+                this.columnUnitShortName.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1562,6 +1606,12 @@ namespace EMC1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(MaterialRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitExpressions() {
+                this.UnitShortNameColumn.Expression = "Parent.ShortName";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3948,6 +3998,8 @@ namespace EMC1 {
             
             private global::System.Data.DataColumn columnMaterialName;
             
+            private global::System.Data.DataColumn columnMaterialUnitShortName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public OutMaterialDataTable() : 
@@ -4064,6 +4116,14 @@ namespace EMC1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MaterialUnitShortNameColumn {
+                get {
+                    return this.columnMaterialUnitShortName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4099,7 +4159,7 @@ namespace EMC1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public OutMaterialRow AddOutMaterialRow(System.DateTime Date, MaterialRow parentMaterialRowByFK_OutMaterial_Material, decimal Count, UserRow parentUserRowByFK_OutMaterial_Storeman, JobRow parentJobRowByFK_OutMaterial_Job, StorageRow parentStorageRowByFK_OutMaterial_Storage, EmployeeRow parentEmployeeRowByFK_OutMaterial_Recipient, string MaterialName) {
+            public OutMaterialRow AddOutMaterialRow(System.DateTime Date, MaterialRow parentMaterialRowByFK_OutMaterial_Material, decimal Count, UserRow parentUserRowByFK_OutMaterial_Storeman, JobRow parentJobRowByFK_OutMaterial_Job, StorageRow parentStorageRowByFK_OutMaterial_Storage, EmployeeRow parentEmployeeRowByFK_OutMaterial_Recipient, string MaterialName, string MaterialUnitShortName) {
                 OutMaterialRow rowOutMaterialRow = ((OutMaterialRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -4110,7 +4170,8 @@ namespace EMC1 {
                         null,
                         null,
                         null,
-                        MaterialName};
+                        MaterialName,
+                        MaterialUnitShortName};
                 if ((parentMaterialRowByFK_OutMaterial_Material != null)) {
                     columnValuesArray[2] = parentMaterialRowByFK_OutMaterial_Material[0];
                 }
@@ -4140,6 +4201,7 @@ namespace EMC1 {
                         Date,
                         null,
                         Count,
+                        null,
                         null,
                         null,
                         null,
@@ -4198,6 +4260,7 @@ namespace EMC1 {
                 this.columnStorageId = base.Columns["StorageId"];
                 this.columnRecipientId = base.Columns["RecipientId"];
                 this.columnMaterialName = base.Columns["MaterialName"];
+                this.columnMaterialUnitShortName = base.Columns["MaterialUnitShortName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4221,6 +4284,8 @@ namespace EMC1 {
                 base.Columns.Add(this.columnRecipientId);
                 this.columnMaterialName = new global::System.Data.DataColumn("MaterialName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMaterialName);
+                this.columnMaterialUnitShortName = new global::System.Data.DataColumn("MaterialUnitShortName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMaterialUnitShortName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -4230,6 +4295,7 @@ namespace EMC1 {
                 this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
                 this.columnMaterialName.ReadOnly = true;
+                this.columnMaterialUnitShortName.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4254,6 +4320,7 @@ namespace EMC1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitExpressions() {
                 this.MaterialNameColumn.Expression = "Parent(FK_OutMaterial_Material).Name";
+                this.MaterialUnitShortNameColumn.Expression = "Parent(FK_OutMaterial_Material).UnitShortName";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4375,11 +4442,9 @@ namespace EMC1 {
             
             private global::System.Data.DataColumn columnCount;
             
-            private global::System.Data.DataColumn columnMaterialName;
-            
-            private global::System.Data.DataColumn columnShortName;
-            
             private global::System.Data.DataColumn columnBalanceStr;
+            
+            private global::System.Data.DataColumn columnMaterialName;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -4449,25 +4514,17 @@ namespace EMC1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MaterialNameColumn {
-                get {
-                    return this.columnMaterialName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ShortNameColumn {
-                get {
-                    return this.columnShortName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn BalanceStrColumn {
                 get {
                     return this.columnBalanceStr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MaterialNameColumn {
+                get {
+                    return this.columnMaterialName;
                 }
             }
             
@@ -4508,15 +4565,14 @@ namespace EMC1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public StoredRow AddStoredRow(StorageRow parentStorageRowByFK_Stored_Storage, MaterialRow parentMaterialRowByFK_Stored_Material, decimal Count, string MaterialName, string ShortName, string BalanceStr) {
+            public StoredRow AddStoredRow(StorageRow parentStorageRowByFK_Stored_Storage, MaterialRow parentMaterialRowByFK_Stored_Material, decimal Count, string BalanceStr, string MaterialName) {
                 StoredRow rowStoredRow = ((StoredRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         Count,
-                        MaterialName,
-                        ShortName,
-                        BalanceStr};
+                        BalanceStr,
+                        MaterialName};
                 if ((parentStorageRowByFK_Stored_Storage != null)) {
                     columnValuesArray[0] = parentStorageRowByFK_Stored_Storage[0];
                 }
@@ -4530,14 +4586,13 @@ namespace EMC1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public StoredRow AddStoredRow(StorageRow parentStorageRowByFK_Stored_Storage, MaterialRow parentMaterialRowByFK_Stored_Material, decimal Count, string MaterialName, string ShortName) {
+            public StoredRow AddStoredRow(StorageRow parentStorageRowByFK_Stored_Storage, MaterialRow parentMaterialRowByFK_Stored_Material, decimal Count) {
                 StoredRow rowStoredRow = ((StoredRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         Count,
-                        MaterialName,
-                        ShortName,
+                        null,
                         null};
                 if ((parentStorageRowByFK_Stored_Storage != null)) {
                     columnValuesArray[0] = parentStorageRowByFK_Stored_Storage[0];
@@ -4578,9 +4633,8 @@ namespace EMC1 {
                 this.columnStorageId = base.Columns["StorageId"];
                 this.columnMaterialId = base.Columns["MaterialId"];
                 this.columnCount = base.Columns["Count"];
-                this.columnMaterialName = base.Columns["MaterialName"];
-                this.columnShortName = base.Columns["ShortName"];
                 this.columnBalanceStr = base.Columns["BalanceStr"];
+                this.columnMaterialName = base.Columns["MaterialName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4592,24 +4646,18 @@ namespace EMC1 {
                 base.Columns.Add(this.columnMaterialId);
                 this.columnCount = new global::System.Data.DataColumn("Count", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCount);
-                this.columnMaterialName = new global::System.Data.DataColumn("MaterialName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMaterialName);
-                this.columnShortName = new global::System.Data.DataColumn("ShortName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnShortName);
                 this.columnBalanceStr = new global::System.Data.DataColumn("BalanceStr", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBalanceStr);
+                this.columnMaterialName = new global::System.Data.DataColumn("MaterialName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMaterialName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnStorageId,
                                 this.columnMaterialId}, true));
                 this.columnStorageId.AllowDBNull = false;
                 this.columnMaterialId.AllowDBNull = false;
                 this.columnCount.AllowDBNull = false;
-                this.columnMaterialName.ReadOnly = true;
-                this.columnMaterialName.Caption = "Name";
-                this.columnMaterialName.MaxLength = 50;
-                this.columnShortName.ReadOnly = true;
-                this.columnShortName.MaxLength = 50;
                 this.columnBalanceStr.ReadOnly = true;
+                this.columnMaterialName.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4633,7 +4681,8 @@ namespace EMC1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitExpressions() {
-                this.BalanceStrColumn.Expression = "Count+\' \'+ShortName";
+                this.BalanceStrColumn.Expression = "Count+\' \'+Parent(FK_Stored_Material).UnitShortName";
+                this.MaterialNameColumn.Expression = "Parent(FK_Stored_Material).Name";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4958,6 +5007,22 @@ namespace EMC1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string UnitShortName {
+                get {
+                    try {
+                        return ((string)(this[this.tableMaterial.UnitShortNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'UnitShortName\' в таблице \'Material\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMaterial.UnitShortNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public UnitRow UnitRow {
                 get {
                     return ((UnitRow)(this.GetParentRow(this.Table.ParentRelations["FK_Material_Unit"])));
@@ -4989,6 +5054,18 @@ namespace EMC1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetUnitIdNull() {
                 this[this.tableMaterial.UnitIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsUnitShortNameNull() {
+                return this.IsNull(this.tableMaterial.UnitShortNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetUnitShortNameNull() {
+                this[this.tableMaterial.UnitShortNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5925,6 +6002,23 @@ namespace EMC1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MaterialUnitShortName {
+                get {
+                    try {
+                        return ((string)(this[this.tableOutMaterial.MaterialUnitShortNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'MaterialUnitShortName\' в таблице \'OutMaterial\' равно DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableOutMaterial.MaterialUnitShortNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public JobRow JobRow {
                 get {
                     return ((JobRow)(this.GetParentRow(this.Table.ParentRelations["FK_OutMaterial_Job"])));
@@ -6073,6 +6167,18 @@ namespace EMC1 {
             public void SetMaterialNameNull() {
                 this[this.tableOutMaterial.MaterialNameColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMaterialUnitShortNameNull() {
+                return this.IsNull(this.tableOutMaterial.MaterialUnitShortNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMaterialUnitShortNameNull() {
+                this[this.tableOutMaterial.MaterialUnitShortNameColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -6124,38 +6230,6 @@ namespace EMC1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string MaterialName {
-                get {
-                    try {
-                        return ((string)(this[this.tableStored.MaterialNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'MaterialName\' в таблице \'Stored\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStored.MaterialNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ShortName {
-                get {
-                    try {
-                        return ((string)(this[this.tableStored.ShortNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ShortName\' в таблице \'Stored\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableStored.ShortNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string BalanceStr {
                 get {
                     try {
@@ -6167,6 +6241,22 @@ namespace EMC1 {
                 }
                 set {
                     this[this.tableStored.BalanceStrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MaterialName {
+                get {
+                    try {
+                        return ((string)(this[this.tableStored.MaterialNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'MaterialName\' в таблице \'Stored\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStored.MaterialNameColumn] = value;
                 }
             }
             
@@ -6194,30 +6284,6 @@ namespace EMC1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsMaterialNameNull() {
-                return this.IsNull(this.tableStored.MaterialNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetMaterialNameNull() {
-                this[this.tableStored.MaterialNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsShortNameNull() {
-                return this.IsNull(this.tableStored.ShortNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetShortNameNull() {
-                this[this.tableStored.ShortNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsBalanceStrNull() {
                 return this.IsNull(this.tableStored.BalanceStrColumn);
             }
@@ -6226,6 +6292,18 @@ namespace EMC1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetBalanceStrNull() {
                 this[this.tableStored.BalanceStrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMaterialNameNull() {
+                return this.IsNull(this.tableStored.MaterialNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMaterialNameNull() {
+                this[this.tableStored.MaterialNameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -7277,7 +7355,7 @@ SELECT Id, Staff, FullName, Phone FROM Employee WHERE (Id = @Id)";
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DataSetEMC1.MaterialDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSetEMC1.MaterialDataTable dataTable = new DataSetEMC1.MaterialDataTable();
+            DataSetEMC1.MaterialDataTable dataTable = new DataSetEMC1.MaterialDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -9831,17 +9909,35 @@ SELECT Id, Date, MaterialId, Count, StoremanId, JobId, StorageId, RecipientId FR
             tableMapping.ColumnMappings.Add("StorageId", "StorageId");
             tableMapping.ColumnMappings.Add("MaterialId", "MaterialId");
             tableMapping.ColumnMappings.Add("Count", "Count");
-            tableMapping.ColumnMappings.Add("Name", "MaterialName");
-            tableMapping.ColumnMappings.Add("ShortName", "ShortName");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [Stored] WHERE (([StorageId] = @Original_StorageId) AND ([MaterialId]" +
+                " = @Original_MaterialId) AND ([Count] = @Original_Count))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StorageId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StorageId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaterialId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaterialId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Count", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Count", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [Stored] ([StorageId], [MaterialId], [Count]) VALUES (@StorageId, @Ma" +
+                "terialId, @Count)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StorageId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StorageId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaterialId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaterialId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Count", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Count", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE       Stored\r\nSET                Count = @Count\r\nWHERE        (MaterialId " +
-                "= @MaterialId) AND (StorageId = @StorageId)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [Stored] SET [StorageId] = @StorageId, [MaterialId] = @MaterialId, [Count]" +
+                " = @Count WHERE (([StorageId] = @Original_StorageId) AND ([MaterialId] = @Origin" +
+                "al_MaterialId) AND ([Count] = @Original_Count))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Count", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "Count", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaterialId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "MaterialId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StorageId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "StorageId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StorageId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StorageId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaterialId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaterialId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Count", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Count", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StorageId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StorageId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaterialId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaterialId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Count", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Count", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9857,10 +9953,7 @@ SELECT Id, Date, MaterialId, Count, StoremanId, JobId, StorageId, RecipientId FR
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        Stored.StorageId, Stored.MaterialId, Stored.Count, Material.Name, Unit.ShortName
-FROM            Stored INNER JOIN
-                         Material ON Stored.MaterialId = Material.Id INNER JOIN
-                         Unit ON Material.UnitId = Unit.Id";
+            this._commandCollection[0].CommandText = "SELECT        StorageId, MaterialId, Count\r\nFROM            Stored";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
