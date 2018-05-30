@@ -24,21 +24,6 @@ namespace EMC1
            
         }
 
-        private void MatOut_Load(object sender, EventArgs e)
-        {
-            //// TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.Stored". При необходимости она может быть перемещена или удалена.
-            //this.storedTableAdapter.Fill(this.dataSetEMC1.Stored);
-            //// TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.Storage". При необходимости она может быть перемещена или удалена.
-            //this.storageTableAdapter.Fill(this.dataSetEMC1.Storage);
-            //// TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.OutMaterial". При необходимости она может быть перемещена или удалена.
-            //this.outMaterialTableAdapter.Fill(this.dataSetEMC1.OutMaterial);
-            //// TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.Job". При необходимости она может быть перемещена или удалена.
-            //this.jobTableAdapter.Fill(this.dataSetEMC1.Job);
-
-            //jobBindingSource.ResetBindings(false);
-            //storageBindingSource.ResetBindings(false);
-        }
-
 
 
 
@@ -86,8 +71,7 @@ namespace EMC1
                 return false;
             }
 
-            return true;
-            if (Convert.ToInt32(txbCol.Text) <= ((DataSetEMC1.StoredRow)storedBindingSource.Current).Count)
+            if (Convert.ToInt32(txbCol.Text) <= ((DataSetEMC1.StoredRow)((DataRowView)storedBindingSource.Current).Row).Count)
                 return true;
             else
             {
@@ -106,13 +90,30 @@ namespace EMC1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.outMaterialTableAdapter.Update((DataSetEMC1)sharedBindingSource.DataSource);
-            this.storedTableAdapter.Update((DataSetEMC1)sharedBindingSource.DataSource);
+            var connection = outMaterialTableAdapter.Connection;
+            this.storedTableAdapter.Connection = connection;
+            connection.Open();
+            using (SqlTransaction transaction = connection.BeginTransaction())
+            {
+                this.outMaterialTableAdapter.Transaction=transaction;
+                this.storedTableAdapter.Transaction= transaction;
+                this.outMaterialTableAdapter.Update((DataSetEMC1)sharedBindingSource.DataSource);
+                this.storedTableAdapter.Update((DataSetEMC1)sharedBindingSource.DataSource);
+                transaction.Commit();
+            }
+            connection.Close();
         }
 
         private void btDelete_Click(object sender, EventArgs e)
         {
-
+            foreach (var selectedRow in outMateriasDataGridView.SelectedRows)
+            {
+                var outMaterialTableRow = (DataSetEMC1.OutMaterialRow)((DataRowView)((DataGridViewRow)selectedRow).DataBoundItem).Row;
+                ((DataSetEMC1)sharedBindingSource.DataSource).Stored
+                    .Single(sm => sm.StorageId == outMaterialTableRow.StorageId && sm.MaterialId == outMaterialTableRow.MaterialId)
+                    .Count += outMaterialTableRow.Count;
+                ((DataSetEMC1)sharedBindingSource.DataSource).OutMaterial.Rows.Remove(outMaterialTableRow);
+            }
         }
     }
 }

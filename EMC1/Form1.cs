@@ -20,12 +20,9 @@ namespace EMC1
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.Stored". При необходимости она может быть перемещена или удалена.
-            this.storedTableAdapter.Fill(this.dataSetEMC1.Stored);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSetEMC1.Balance". При необходимости она может быть перемещена или удалена.
-            this.balanceTableAdapter.Fill(this.dataSetEMC1.Balance);
+        { 
             SetScreen();
+            new StoredTableAdapter().Fill(this.dataSetEMC1.Stored);
             new OutMaterialTableAdapter().Fill(this.dataSetEMC1.OutMaterial);
             new StorageTableAdapter().Fill(this.dataSetEMC1.Storage);
             new JobTableAdapter().Fill(this.dataSetEMC1.Job);
@@ -82,20 +79,6 @@ namespace EMC1
             this.storageTableAdapter.Fill(this.dataSetEMC1.Storage);
         }
         
-
-        private void dataGridView2_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dataGridView2.CurrentRow == null)
-                return;
-            DataRowView rw = (DataRowView)dataGridView2.CurrentRow.DataBoundItem;
-            FillOstStorage((int)rw["Id"]);
-        }
-
-        private void FillOstStorage(int id)
-        {
-            //this.balanceTableAdapter.Fill(this.dataSetEMC1.Balance, id);  
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             REP_NARYAD rn = new REP_NARYAD();

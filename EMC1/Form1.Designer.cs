@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.listView1 = new System.Windows.Forms.ListView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.storedBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSetEMC1 = new EMC1.DataSetEMC1();
             this.storageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sharedDataSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSetEMC1 = new EMC1.DataSetEMC1();
-            this.balanceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.but_out_mat = new System.Windows.Forms.Button();
             this.but_in_mat = new System.Windows.Forms.Button();
             this.but_give_job = new System.Windows.Forms.Button();
@@ -43,20 +43,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.storageTableAdapter = new EMC1.DataSetEMC1TableAdapters.StorageTableAdapter();
             this.tableAdapterManager = new EMC1.DataSetEMC1TableAdapters.TableAdapterManager();
-            this.balanceTableAdapter = new EMC1.DataSetEMC1TableAdapters.BalanceTableAdapter();
             this.storedTableAdapter = new EMC1.DataSetEMC1TableAdapters.StoredTableAdapter();
             this.mat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storedBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedDataSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.balanceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,7 +77,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.mat,
             this.count});
-            this.dataGridView1.DataSource = this.balanceBindingSource;
+            this.dataGridView1.DataSource = this.storedBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(208, 65);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -86,6 +85,16 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView1.Size = new System.Drawing.Size(558, 465);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // storedBindingSource
+            // 
+            this.storedBindingSource.DataMember = "FK_Stored_Storage";
+            this.storedBindingSource.DataSource = this.storageBindingSource;
+            // 
+            // dataSetEMC1
+            // 
+            this.dataSetEMC1.DataSetName = "DataSetEMC1";
+            this.dataSetEMC1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // storageBindingSource
             // 
@@ -96,16 +105,6 @@
             // 
             this.sharedDataSource.DataSource = this.dataSetEMC1;
             this.sharedDataSource.Position = 0;
-            // 
-            // dataSetEMC1
-            // 
-            this.dataSetEMC1.DataSetName = "DataSetEMC1";
-            this.dataSetEMC1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // balanceBindingSource
-            // 
-            this.balanceBindingSource.DataMember = "Storage_DataTable1";
-            this.balanceBindingSource.DataSource = this.storageBindingSource;
             // 
             // but_out_mat
             // 
@@ -190,7 +189,13 @@
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.Size = new System.Drawing.Size(190, 465);
             this.dataGridView2.TabIndex = 11;
-            this.dataGridView2.SelectionChanged += new System.EventHandler(this.dataGridView2_SelectionChanged);
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Склад";
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // button1
             // 
@@ -234,17 +239,13 @@
             this.tableAdapterManager.UserRoleTableAdapter = null;
             this.tableAdapterManager.UserTableAdapter = null;
             // 
-            // balanceTableAdapter
-            // 
-            this.balanceTableAdapter.ClearBeforeFill = true;
-            // 
             // storedTableAdapter
             // 
             this.storedTableAdapter.ClearBeforeFill = true;
             // 
             // mat
             // 
-            this.mat.DataPropertyName = "Name";
+            this.mat.DataPropertyName = "MaterialName";
             this.mat.FillWeight = 118.018F;
             this.mat.HeaderText = "Материал";
             this.mat.Name = "mat";
@@ -252,18 +253,11 @@
             // 
             // count
             // 
-            this.count.DataPropertyName = "Balance";
+            this.count.DataPropertyName = "BalanceStr";
             this.count.FillWeight = 118.018F;
             this.count.HeaderText = "Остаток";
             this.count.Name = "count";
             this.count.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn1
-            // 
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn1.HeaderText = "Склад";
-            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
-            this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // Form1
             // 
@@ -287,10 +281,10 @@
             this.Text = "ЭМС-1 ";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storedBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.storageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedDataSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.balanceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -313,16 +307,14 @@
         private System.Windows.Forms.BindingSource storageBindingSource;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.BindingSource balanceBindingSource;
-        //private DataSetEMC1TableAdapters.BalanceTableAdapter balanceTableAdapter;
         private DataSetEMC1TableAdapters.TableAdapterManager tableAdapterManager;
-        private DataSetEMC1TableAdapters.BalanceTableAdapter balanceTableAdapter;
         private System.Windows.Forms.BindingSource sharedDataSource;
         private DataSetEMC1 dataSetEMC1;
         private DataSetEMC1TableAdapters.StoredTableAdapter storedTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.BindingSource storedBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn mat;
         private System.Windows.Forms.DataGridViewTextBoxColumn count;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
     }
 }
 

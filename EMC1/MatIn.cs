@@ -72,8 +72,8 @@ namespace EMC1
             {
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = "select count from storage_nal where id_storage = " 
-                    + cmbStorage.SelectedValue.ToString() + " and id_mat = " + cmbMat.SelectedValue.ToString();
+                //command.CommandText = "select count from storage_nal where id_storage = " 
+                //    + cmbStorage.SelectedValue.ToString() + " and id_mat = " + cmbMat.SelectedValue.ToString();
                 connection.Open();
                 try
                 {
@@ -114,8 +114,8 @@ namespace EMC1
                 {
                     SqlCommand command = new SqlCommand();
                     command.Connection = connection;
-                    command.CommandText = "update storage_nal set count = " + count + " where id_storage = "
-                        + cmbStorage.SelectedValue.ToString() + " and id_mat = " + cmbMat.SelectedValue.ToString();
+                    //command.CommandText = "update storage_nal set count = " + count + " where id_storage = "
+                    //    + cmbStorage.SelectedValue.ToString() + " and id_mat = " + cmbMat.SelectedValue.ToString();
                     connection.Open();
                     try
                     {
