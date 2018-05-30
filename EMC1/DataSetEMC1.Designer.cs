@@ -2692,10 +2692,6 @@ namespace EMC1 {
             
             private global::System.Data.DataColumn columnId;
             
-            private global::System.Data.DataColumn columnLogin;
-            
-            private global::System.Data.DataColumn columnPwd;
-            
             private global::System.Data.DataColumn columnUserRoleId;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2736,22 +2732,6 @@ namespace EMC1 {
             public global::System.Data.DataColumn IdColumn {
                 get {
                     return this.columnId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LoginColumn {
-                get {
-                    return this.columnLogin;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PwdColumn {
-                get {
-                    return this.columnPwd;
                 }
             }
             
@@ -2800,18 +2780,16 @@ namespace EMC1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UserRow AddUserRow(EmployeeRow parentEmployeeRowByFK_User_Employee, string Login, int Pwd, UserRoleRow parentUserRoleRowByFK_User_UserRole) {
+            public UserRow AddUserRow(EmployeeRow parentEmployeeRowByFK_User_Employee, UserRoleRow parentUserRoleRowByFK_User_UserRole) {
                 UserRow rowUserRow = ((UserRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        Login,
-                        Pwd,
                         null};
                 if ((parentEmployeeRowByFK_User_Employee != null)) {
                     columnValuesArray[0] = parentEmployeeRowByFK_User_Employee[0];
                 }
                 if ((parentUserRoleRowByFK_User_UserRole != null)) {
-                    columnValuesArray[3] = parentUserRoleRowByFK_User_UserRole[0];
+                    columnValuesArray[1] = parentUserRoleRowByFK_User_UserRole[0];
                 }
                 rowUserRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowUserRow);
@@ -2843,8 +2821,6 @@ namespace EMC1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnId = base.Columns["Id"];
-                this.columnLogin = base.Columns["Login"];
-                this.columnPwd = base.Columns["Pwd"];
                 this.columnUserRoleId = base.Columns["UserRoleId"];
             }
             
@@ -2853,19 +2829,12 @@ namespace EMC1 {
             private void InitClass() {
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
-                this.columnLogin = new global::System.Data.DataColumn("Login", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLogin);
-                this.columnPwd = new global::System.Data.DataColumn("Pwd", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPwd);
                 this.columnUserRoleId = new global::System.Data.DataColumn("UserRoleId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUserRoleId);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AllowDBNull = false;
                 this.columnId.Unique = true;
-                this.columnLogin.AllowDBNull = false;
-                this.columnLogin.MaxLength = 20;
-                this.columnPwd.AllowDBNull = false;
                 this.columnUserRoleId.AllowDBNull = false;
             }
             
@@ -5428,28 +5397,6 @@ namespace EMC1 {
                 }
                 set {
                     this[this.tableUser.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Login {
-                get {
-                    return ((string)(this[this.tableUser.LoginColumn]));
-                }
-                set {
-                    this[this.tableUser.LoginColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Pwd {
-                get {
-                    return ((int)(this[this.tableUser.PwdColumn]));
-                }
-                set {
-                    this[this.tableUser.PwdColumn] = value;
                 }
             }
             
@@ -8216,41 +8163,8 @@ SELECT Id, Name, City, Street, StoremanId, Phone FROM Storage WHERE (Id = @Id)";
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "User";
             tableMapping.ColumnMappings.Add("Id", "Id");
-            tableMapping.ColumnMappings.Add("Login", "Login");
-            tableMapping.ColumnMappings.Add("Pwd", "Pwd");
             tableMapping.ColumnMappings.Add("UserRoleId", "UserRoleId");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [User] WHERE (([Id] = @Original_Id) AND ([Login] = @Original_Login) A" +
-                "ND ([Pwd] = @Original_Pwd) AND ([UserRoleId] = @Original_UserRoleId))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Login", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Pwd", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pwd", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserRoleId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserRoleId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [User] ([Id], [Login], [Pwd], [UserRoleId]) VALUES (@Id, @Login, @Pwd" +
-                ", @UserRoleId);\r\nSELECT Id, Login, Pwd, UserRoleId FROM [User] WHERE (Id = @Id)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Login", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Pwd", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pwd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserRoleId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserRoleId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [User] SET [Id] = @Id, [Login] = @Login, [Pwd] = @Pwd, [UserRoleId] = @UserRoleId WHERE (([Id] = @Original_Id) AND ([Login] = @Original_Login) AND ([Pwd] = @Original_Pwd) AND ([UserRoleId] = @Original_UserRoleId));
-SELECT Id, Login, Pwd, UserRoleId FROM [User] WHERE (Id = @Id)";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Login", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Pwd", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pwd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserRoleId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserRoleId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Login", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Pwd", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pwd", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserRoleId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserRoleId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8266,16 +8180,25 @@ SELECT Id, Login, Pwd, UserRoleId FROM [User] WHERE (Id = @Id)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        Id, Login, Pwd, UserRoleId\r\nFROM            [User]";
+            this._commandCollection[0].CommandText = "SELECT Id, UserRoleId FROM [User] WHERE (Login = @login) AND (Pwd = @pwd)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@login", global::System.Data.SqlDbType.NChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pwd", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Pwd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetEMC1.UserDataTable dataTable) {
+        public virtual int Fill(DataSetEMC1.UserDataTable dataTable, string login, int pwd) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((login == null)) {
+                throw new global::System.ArgumentNullException("login");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(login));
+            }
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(pwd));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -8287,40 +8210,18 @@ SELECT Id, Login, Pwd, UserRoleId FROM [User] WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetEMC1.UserDataTable GetData() {
+        public virtual DataSetEMC1.UserDataTable GetData(string login, int pwd) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((login == null)) {
+                throw new global::System.ArgumentNullException("login");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(login));
+            }
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(pwd));
             DataSetEMC1.UserDataTable dataTable = new DataSetEMC1.UserDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetEMC1.UserDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DataSetEMC1 dataSet) {
-            return this.Adapter.Update(dataSet, "User");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
         }
     }
     
@@ -10035,8 +9936,6 @@ SELECT Id, Date, MaterialId, Count, StoremanId, JobId, StorageId, RecipientId FR
         
         private UserRoleTableAdapter _userRoleTableAdapter;
         
-        private UserTableAdapter _userTableAdapter;
-        
         private UnitTableAdapter _unitTableAdapter;
         
         private ContrTableAdapter _contrTableAdapter;
@@ -10143,20 +10042,6 @@ SELECT Id, Date, MaterialId, Count, StoremanId, JobId, StorageId, RecipientId FR
             }
             set {
                 this._userRoleTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public UserTableAdapter UserTableAdapter {
-            get {
-                return this._userTableAdapter;
-            }
-            set {
-                this._userTableAdapter = value;
             }
         }
         
@@ -10273,10 +10158,6 @@ SELECT Id, Date, MaterialId, Count, StoremanId, JobId, StorageId, RecipientId FR
                             && (this._userRoleTableAdapter.Connection != null))) {
                     return this._userRoleTableAdapter.Connection;
                 }
-                if (((this._userTableAdapter != null) 
-                            && (this._userTableAdapter.Connection != null))) {
-                    return this._userTableAdapter.Connection;
-                }
                 if (((this._unitTableAdapter != null) 
                             && (this._unitTableAdapter.Connection != null))) {
                     return this._unitTableAdapter.Connection;
@@ -10326,9 +10207,6 @@ SELECT Id, Date, MaterialId, Count, StoremanId, JobId, StorageId, RecipientId FR
                     count = (count + 1);
                 }
                 if ((this._userRoleTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._userTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._unitTableAdapter != null)) {
@@ -10381,15 +10259,6 @@ SELECT Id, Date, MaterialId, Count, StoremanId, JobId, StorageId, RecipientId FR
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._jobTypeTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._userTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.User.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._userTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -10496,14 +10365,6 @@ SELECT Id, Date, MaterialId, Count, StoremanId, JobId, StorageId, RecipientId FR
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._jobTypeTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._userTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.User.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._userTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -10645,14 +10506,6 @@ SELECT Id, Date, MaterialId, Count, StoremanId, JobId, StorageId, RecipientId FR
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._userTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.User.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._userTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._jobTypeTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.JobType.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -10743,11 +10596,6 @@ SELECT Id, Date, MaterialId, Count, StoremanId, JobId, StorageId, RecipientId FR
             }
             if (((this._userRoleTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._userRoleTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
-                        "r, должны использовать одинаковую строку подключения.");
-            }
-            if (((this._userTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._userTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
@@ -10860,15 +10708,6 @@ SELECT Id, Date, MaterialId, Count, StoremanId, JobId, StorageId, RecipientId FR
                     if (this._userRoleTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._userRoleTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._userRoleTableAdapter.Adapter);
-                    }
-                }
-                if ((this._userTableAdapter != null)) {
-                    revertConnections.Add(this._userTableAdapter, this._userTableAdapter.Connection);
-                    this._userTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._userTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._userTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._userTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._userTableAdapter.Adapter);
                     }
                 }
                 if ((this._unitTableAdapter != null)) {
@@ -10997,10 +10836,6 @@ SELECT Id, Date, MaterialId, Count, StoremanId, JobId, StorageId, RecipientId FR
                 if ((this._userRoleTableAdapter != null)) {
                     this._userRoleTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._userRoleTableAdapter]));
                     this._userRoleTableAdapter.Transaction = null;
-                }
-                if ((this._userTableAdapter != null)) {
-                    this._userTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._userTableAdapter]));
-                    this._userTableAdapter.Transaction = null;
                 }
                 if ((this._unitTableAdapter != null)) {
                     this._unitTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._unitTableAdapter]));

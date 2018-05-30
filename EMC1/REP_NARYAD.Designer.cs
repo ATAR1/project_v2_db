@@ -109,7 +109,6 @@
             this.tableAdapterManager.StorageTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = EMC1.DataSetEMC1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UserRoleTableAdapter = null;
-            this.tableAdapterManager.UserTableAdapter = null;
             // 
             // REP_NARYAD
             // 

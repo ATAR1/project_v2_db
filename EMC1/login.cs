@@ -32,10 +32,10 @@ namespace EMC1
 
         private void CheckAcces()
         {
-            if (txbLogin.Text.Trim().Length == 0)
+            if (String.IsNullOrWhiteSpace(txbLogin.Text))
                 return;
 
-            if (txbPWD.Text.Trim().Length == 0)
+            if (String.IsNullOrWhiteSpace(txbPWD.Text))
                 return;
 
             using (SqlConnection connection = new SqlConnection())

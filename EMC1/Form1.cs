@@ -26,7 +26,6 @@ namespace EMC1
             new OutMaterialTableAdapter().Fill(this.dataSetEMC1.OutMaterial);
             new StorageTableAdapter().Fill(this.dataSetEMC1.Storage);
             new JobTableAdapter().Fill(this.dataSetEMC1.Job);
-            new UserTableAdapter().Fill(dataSetEMC1.User);
             new EmployeTableAdapter().Fill(dataSetEMC1.Employee);
             new MaterialTableAdapter().Fill(dataSetEMC1.Material);
             new UnitTableAdapter().Fill(dataSetEMC1.Unit);
