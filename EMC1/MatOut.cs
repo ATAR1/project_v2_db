@@ -112,7 +112,8 @@ namespace EMC1
                 ((DataSetEMC1)sharedBindingSource.DataSource).Stored
                     .Single(sm => sm.StorageId == outMaterialTableRow.StorageId && sm.MaterialId == outMaterialTableRow.MaterialId)
                     .Count += outMaterialTableRow.Count;
-                ((DataSetEMC1)sharedBindingSource.DataSource).OutMaterial.Rows.Remove(outMaterialTableRow);
+                outMaterialTableRow.Delete();
+                //((DataSetEMC1)sharedBindingSource.DataSource).OutMaterial.Rows.Remove(outMaterialTableRow);
             }
         }
     }

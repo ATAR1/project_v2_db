@@ -319,7 +319,7 @@
             // name
             // 
             this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.name.DataPropertyName = "MaterialId";
+            this.name.DataPropertyName = "MaterialName";
             this.name.Frozen = true;
             this.name.HeaderText = "Материал";
             this.name.Name = "name";
