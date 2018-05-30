@@ -29,34 +29,35 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            EMC1.DataSetEMC1 dataSetEMC1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GiveJob));
             this.label1 = new System.Windows.Forms.Label();
             this.dtp = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmbMat = new System.Windows.Forms.ComboBox();
-            this.materialBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSetEMC1 = new EMC1.DataSetEMC1();
-            this.materialTableAdapter = new EMC1.DataSetEMC1TableAdapters.MaterialTableAdapter();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbJobs = new System.Windows.Forms.ComboBox();
-            this.jobsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.jobTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sharedDataSource = new System.Windows.Forms.BindingSource(this.components);
             this.jobTypeTableAdapter = new EMC1.DataSetEMC1TableAdapters.JobTypeTableAdapter();
             this.btOk = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
-            this.jobTableAdapter1 = new EMC1.DataSetEMC1TableAdapters.JobTableAdapter();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbEmpl = new System.Windows.Forms.ComboBox();
             this.employessBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeTableAdapter = new EMC1.DataSetEMC1TableAdapters.EmployeTableAdapter();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.unitTableAdapter1 = new EMC1.DataSetEMC1TableAdapters.UnitTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jobsBindingSource)).BeginInit();
+            dataSetEMC1 = new EMC1.DataSetEMC1();
+            ((System.ComponentModel.ISupportInitialize)(dataSetEMC1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobTypeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sharedDataSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employessBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dataSetEMC1
+            // 
+            dataSetEMC1.DataSetName = "DataSetEMC1";
+            dataSetEMC1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -69,45 +70,10 @@
             // 
             // dtp
             // 
-            this.dtp.Location = new System.Drawing.Point(68, 19);
+            this.dtp.Location = new System.Drawing.Point(82, 19);
             this.dtp.Name = "dtp";
-            this.dtp.Size = new System.Drawing.Size(194, 20);
+            this.dtp.Size = new System.Drawing.Size(180, 20);
             this.dtp.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 94);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Материал:";
-            // 
-            // cmbMat
-            // 
-            this.cmbMat.DataSource = this.materialBindingSource;
-            this.cmbMat.DisplayMember = "name";
-            this.cmbMat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMat.FormattingEnabled = true;
-            this.cmbMat.Location = new System.Drawing.Point(82, 91);
-            this.cmbMat.Name = "cmbMat";
-            this.cmbMat.Size = new System.Drawing.Size(180, 21);
-            this.cmbMat.TabIndex = 3;
-            this.cmbMat.ValueMember = "id_mat";
-            // 
-            // materialBindingSource
-            // 
-            this.materialBindingSource.DataMember = "material";
-            this.materialBindingSource.DataSource = this.dataSetEMC1;
-            // 
-            // dataSetEMC1
-            // 
-            this.dataSetEMC1.DataSetName = "DataSetEMC1";
-            this.dataSetEMC1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // materialTableAdapter
-            // 
-            this.materialTableAdapter.ClearBeforeFill = true;
             // 
             // label3
             // 
@@ -120,24 +86,27 @@
             // 
             // cmbJobs
             // 
-            this.cmbJobs.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.jobsBindingSource, "id_jobs", true));
-            this.cmbJobs.DataSource = this.jobsBindingSource;
-            this.cmbJobs.DisplayMember = "name";
+            this.cmbJobs.DataSource = this.jobTypeBindingSource;
+            this.cmbJobs.DisplayMember = "Name";
             this.cmbJobs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbJobs.FormattingEnabled = true;
             this.cmbJobs.Location = new System.Drawing.Point(82, 63);
             this.cmbJobs.Name = "cmbJobs";
             this.cmbJobs.Size = new System.Drawing.Size(180, 21);
             this.cmbJobs.TabIndex = 5;
-            this.cmbJobs.ValueMember = "id_jobs";
-            this.cmbJobs.SelectedIndexChanged += new System.EventHandler(this.cmbJobs_SelectedIndexChanged);
+            this.cmbJobs.ValueMember = "Id";
             // 
-            // jobsBindingSource
+            // jobTypeBindingSource
             // 
-            this.jobsBindingSource.DataMember = "jobs";
-            this.jobsBindingSource.DataSource = this.dataSetEMC1;
+            this.jobTypeBindingSource.DataMember = "JobType";
+            this.jobTypeBindingSource.DataSource = this.sharedDataSource;
             // 
-            // jobsTableAdapter
+            // sharedDataSource
+            // 
+            this.sharedDataSource.DataSource = dataSetEMC1;
+            this.sharedDataSource.Position = 0;
+            // 
+            // jobTypeTableAdapter
             // 
             this.jobTypeTableAdapter.ClearBeforeFill = true;
             // 
@@ -161,14 +130,10 @@
             this.btCancel.UseVisualStyleBackColor = true;
             this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
-            // planjobTableAdapter1
-            // 
-            this.jobTableAdapter1.ClearBeforeFill = true;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 120);
+            this.label4.Location = new System.Drawing.Point(16, 104);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 8;
@@ -177,21 +142,21 @@
             // cmbEmpl
             // 
             this.cmbEmpl.DataSource = this.employessBindingSource;
-            this.cmbEmpl.DisplayMember = "fio";
+            this.cmbEmpl.DisplayMember = "FullName";
             this.cmbEmpl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEmpl.FormattingEnabled = true;
-            this.cmbEmpl.Location = new System.Drawing.Point(82, 120);
+            this.cmbEmpl.Location = new System.Drawing.Point(82, 104);
             this.cmbEmpl.Name = "cmbEmpl";
             this.cmbEmpl.Size = new System.Drawing.Size(180, 21);
             this.cmbEmpl.TabIndex = 9;
-            this.cmbEmpl.ValueMember = "id_emp";
+            this.cmbEmpl.ValueMember = "Id";
             // 
             // employessBindingSource
             // 
-            this.employessBindingSource.DataMember = "employess";
-            this.employessBindingSource.DataSource = this.dataSetEMC1;
+            this.employessBindingSource.DataMember = "Employee";
+            this.employessBindingSource.DataSource = this.sharedDataSource;
             // 
-            // employessTableAdapter
+            // employeTableAdapter
             // 
             this.employeTableAdapter.ClearBeforeFill = true;
             // 
@@ -213,10 +178,6 @@
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
             // 
-            // eD_IZMTableAdapter1
-            // 
-            this.unitTableAdapter1.ClearBeforeFill = true;
-            // 
             // GiveJob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,17 +191,14 @@
             this.Controls.Add(this.btOk);
             this.Controls.Add(this.cmbJobs);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.cmbMat);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.dtp);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "GiveJob";
             this.Text = "Задание";
-            this.Load += new System.EventHandler(this.GiveJob_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.materialBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetEMC1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jobsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(dataSetEMC1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobTypeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sharedDataSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employessBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -252,24 +210,18 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtp;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cmbMat;
-        private DataSetEMC1 dataSetEMC1;
-        private System.Windows.Forms.BindingSource materialBindingSource;
-        private DataSetEMC1TableAdapters.MaterialTableAdapter materialTableAdapter;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbJobs;
-        private System.Windows.Forms.BindingSource jobsBindingSource;
+        private System.Windows.Forms.BindingSource jobTypeBindingSource;
         private DataSetEMC1TableAdapters.JobTypeTableAdapter jobTypeTableAdapter;
         private System.Windows.Forms.Button btOk;
         private System.Windows.Forms.Button btCancel;
-        private DataSetEMC1TableAdapters.JobTableAdapter jobTableAdapter1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbEmpl;
         private System.Windows.Forms.BindingSource employessBindingSource;
         private DataSetEMC1TableAdapters.EmployeTableAdapter employeTableAdapter;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private DataSetEMC1TableAdapters.UnitTableAdapter unitTableAdapter1;
+        private System.Windows.Forms.BindingSource sharedDataSource;
     }
 }

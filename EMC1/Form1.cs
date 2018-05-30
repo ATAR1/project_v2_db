@@ -70,7 +70,7 @@ namespace EMC1
 
         private void btGiveJobClick(object sender, EventArgs e)
         {
-            GiveJob givejob = new GiveJob();
+            GiveJob givejob = new GiveJob(dataSetEMC1);
             givejob.ShowDialog();
         }
 

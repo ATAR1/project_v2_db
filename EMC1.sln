@@ -11,8 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{DF444547-2CCB-
 		DB\emcDB_log.ldf = DB\emcDB_log.ldf
 	EndProjectSection
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "EMC_DB", "EMC_DB\EMC_DB.sqlproj", "{AF4977AD-4608-483D-A21D-639BBA595D51}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +21,6 @@ Global
 		{7B82794B-8273-430E-A136-3E96653C611F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B82794B-8273-430E-A136-3E96653C611F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B82794B-8273-430E-A136-3E96653C611F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AF4977AD-4608-483D-A21D-639BBA595D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AF4977AD-4608-483D-A21D-639BBA595D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AF4977AD-4608-483D-A21D-639BBA595D51}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{AF4977AD-4608-483D-A21D-639BBA595D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AF4977AD-4608-483D-A21D-639BBA595D51}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AF4977AD-4608-483D-A21D-639BBA595D51}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
